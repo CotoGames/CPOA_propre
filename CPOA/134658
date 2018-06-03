@@ -1,0 +1,54 @@
+format 218
+"Analyse" // Analyse
+  revision 1
+  modified_by 2 "arkan"
+  // class settings
+  
+  classdiagramsettings member_max_width 0 end
+  
+  usecasediagramsettings end
+  
+  sequencediagramsettings end
+  
+  collaborationdiagramsettings end
+  
+  objectdiagramsettings end
+  
+  componentdiagramsettings
+   end
+  
+  deploymentdiagramsettings
+   end
+  
+  statediagramsettings
+   end
+  
+  activitydiagramsettings
+   end
+  
+  package_ref 134786 // Herbergement
+
+  package_ref 134914 // Planning
+
+  classview 134530 "DP_Analyse"
+    
+    classdiagramsettings member_max_width 0 end
+    
+    collaborationdiagramsettings end
+    
+    objectdiagramsettings end
+    
+    sequencediagramsettings end
+    
+    statediagramsettings
+     end
+    
+    
+    activitydiagramsettings
+     end
+    classdiagram 134530 "DP_Analyse"
+      classdiagramsettings member_max_width 0 end
+      size A4
+    end
+  end
+end

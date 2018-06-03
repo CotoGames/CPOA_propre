@@ -1,0 +1,20 @@
+window_sizes 1920 1017 455 1459 808 157
+cleanlooks_style
+diagrams
+  classdiagram_ref 135554 // DC_hebergement
+    1167 646 100 A4 122 0
+  sequencediagram_ref 135170 // DS_génération
+    112 102 100 A4 0 0
+  sequencediagram_ref 135682 // DS_affectation_resa
+    112 102 100 A4 0 0
+  usecasediagram_ref 135426 // DCU_hebergement
+    112 102 100 A4 0 0
+  active  activitydiagram_ref 135810 // DA_saisie_carac
+    1459 808 100 A4 0 0
+end
+show_stereotypes
+selected 
+  package_ref 129 // CPOA
+open
+end
+end

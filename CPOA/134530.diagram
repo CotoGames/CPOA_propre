@@ -1,0 +1,11 @@
+format 218
+
+packagecanvas 128002 
+  package_ref 134786 // Herbergement
+    xyzwh 581.7 389.4 2000 133 111
+end
+packagecanvas 128130 
+  package_ref 134914 // Planning
+    xyzwh 572.5 156 2000 127 109
+end
+end

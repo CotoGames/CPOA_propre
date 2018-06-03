@@ -1,0 +1,61 @@
+format 218
+
+classcanvas 128002 class_ref 135938 // Hebergement
+  classdiagramsettings member_max_width 0 end
+  xyz 263.2 250.2 2000
+end
+classcanvas 128130 class_ref 136066 // Service
+  classdiagramsettings member_max_width 0 end
+  xyz 97.6 341.6 2000
+end
+classcanvas 128642 class_ref 134914 // Jures
+  classdiagramsettings member_max_width 0 end
+  xyz 428.8 616.6 2000
+end
+classcanvas 128770 class_ref 136194 // VIP
+  classdiagramsettings member_max_width 0 end
+  xyz 606.8 283.3 2000
+end
+classcanvas 129154 class_ref 136322 // Invites
+  classdiagramsettings member_max_width 0 end
+  xyz 540.5 629.2 2000
+end
+classcanvas 129538 class_ref 136450 // staff_film
+  classdiagramsettings member_max_width 0 end
+  xyz 684.4 653.5 2000
+end
+classcanvas 130178 class_ref 136578 // Reservation
+  classdiagramsettings member_max_width 0 end
+  xyz 408.4 234.7 2000
+end
+relationcanvas 128386 relation_ref 135298 // <aggregation>
+  from ref 128002 z 2001 to ref 128130
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 129026 relation_ref 135554 // <generalisation>
+  from ref 128642 z 2001 to ref 128770
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 129282 relation_ref 135810 // <generalisation>
+  from ref 129154 z 2001 to ref 128770
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 129666 relation_ref 135938 // <generalisation>
+  from ref 129538 z 2001 to ref 128770
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 130562 relation_ref 136706 // <aggregation>
+  from ref 128002 z 2001 to ref 130178
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 130818 relation_ref 136834 // <directional aggregation>
+  from ref 130178 z 2001 to ref 128770
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+end

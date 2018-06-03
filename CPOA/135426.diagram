@@ -1,0 +1,43 @@
+format 218
+
+classcanvas 128002 class_ref 135554 // responsable
+  simpleclassdiagramsettings end
+  xyz 119.8 250.2 2000
+end
+classcanvas 128130 class_ref 135682 // gerant_hotel
+  simpleclassdiagramsettings end
+  xyz 126.5 417.9 2000
+end
+usecasecanvas 128258 usecase_ref 135042 // saisie_caracteristique
+  xyzwh 313 492 3005 64 32 label_xy 285 474
+end
+usecasecanvas 129154 usecase_ref 135426 // affectation_resa_VIP
+  xyzwh 313 187 3005 64 32 label_xy 286 218
+end
+usecasecanvas 129282 usecase_ref 135554 // suppr_resa_VIP
+  xyzwh 332 297 3010 64 32 label_xy 318 328
+end
+subject 129666 ""
+  color lightmediumblue  xyzwh 242.1 166.6 2000 419 501
+classcanvas 129794 class_ref 135810 // systeme
+  simpleclassdiagramsettings end
+  xyz 714.3 243.5 2000
+end
+usecasecanvas 129922 usecase_ref 135682 // repartition_resa
+  xyzwh 536 301 3005 64 32 label_xy 524 333
+end
+textcanvas 130306 "<<include>>"
+  xyzwh 438 410 3011 92 16
+line 128386 ----
+  from ref 128002 z 3006 to ref 128258
+line 128514 ----
+  from ref 128130 z 3006 to ref 128258
+line 130050 ----
+  from ref 129794 z 3006 to ref 129922
+line 130178 --->
+  from ref 128258 z 3006 to ref 129922
+line 130434 ----
+  from ref 128002 z 3006 to ref 129154
+line 130690 ----
+  from ref 128002 z 3011 to ref 129282
+end
