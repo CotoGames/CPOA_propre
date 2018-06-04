@@ -300,7 +300,7 @@ ${members}}
 
   classview 134658 "DC_Planning"
     
-    classdiagramsettings member_max_width 0 end
+    classdiagramsettings hide_attributes no hide_getset_operations no show_members_full_definition yes show_members_visibility yes show_members_stereotype yes member_max_width 0 end
     
     collaborationdiagramsettings end
     

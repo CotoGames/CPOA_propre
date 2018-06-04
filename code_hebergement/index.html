@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Documentation produced by the Html generator of Bouml (http://www.bouml.fr) -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<title>Herbergement
+Documentation</title>
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body bgcolor="#ffffff">
+
+<div class = "title">Herbergement<br />Documentation</div>
+<p></p>
+
+<!-- ============================================================= -->
+
+<a name="ref22_134786"></a>
+<a name="ref19_134658"></a>
+<h1 class ="view">1 Use Case View DCU_herbergement</h1>
+<div class="sub">
+<a name="ref11_135426"></a>
+<p align="center"><img src="fig135426.png" alt="" /></p>
+ <p align="center"><b>DCU_hebergement</b></p><p><br /></p><p><br /></p>
+<table><tr><td><div class="element">Class <b><a href="class135554.html#ref4_135554"><b>responsable</b></a></b></div></td></tr></table>
+<table><tr><td><div class="element">Class <b><a href="class135682.html#ref4_135682"><b>gerant_hotel</b></a></b></div></td></tr></table>
+<a name="ref5_135042"></a>
+<h2 class ="usecase">1.1 Use Case saisie_caracteristique</h2>
+<a name="ref5_135170"></a>
+<h2 class ="usecase">1.2 Use Case saisie_nb_places</h2>
+<a name="ref5_135298"></a>
+<h2 class ="usecase">1.3 Use Case saisie_reservation_VIP</h2>
+<a name="ref5_135426"></a>
+<h2 class ="usecase">1.4 Use Case affectation_resa_VIP</h2>
+<a name="ref5_135554"></a>
+<h2 class ="usecase">1.5 Use Case suppr_resa_VIP</h2>
+<table><tr><td><div class="element">Class <b><a href="class135810.html#ref4_135810"><b>systeme</b></a></b></div></td></tr></table>
+<a name="ref5_135682"></a>
+<h2 class ="usecase">1.6 Use Case repartition_resa</h2>
+<a name="ref39_135042"></a>
+<h2 class ="activity">1.7 Activity DA_suppr_resa</h2>
+<div class="sub">
+<a name="ref17_135810"></a>
+<p align="center"><img src="fig135810.png" alt="" /></p>
+ <p align="center"><b>DA_suppr_resa</b></p><p><br /></p><p><br /></p>
+<a name="ref46_128003"></a>
+<table><tr><td><div class="element">Opaque activity action <b>saisie</b></div></td></tr></table>
+<p>Defined in <a href="index.html#ref39_135042"><b>DA_suppr_resa</b></a></p><div class="sub">
+<table><tr><td><div class="element">Flow  <b>&lt;flow&gt;</b></div></td></tr></table><p>From <a href="index.html#ref46_128003"><b>saisie</b></a> To <a href="index.html#ref72_128131"><b>activity final</b></a></p></div>
+<a name="ref70_128003"></a>
+<a name="ref70_128003"></a>
+<table><tr><td><div class="element">Initial activity node <b></b></div></td></tr></table>
+<p>Defined in <a href="index.html#ref39_135042"><b>DA_suppr_resa</b></a></p><div class="sub">
+<table><tr><td><div class="element">Flow  <b>&lt;flow&gt;</b></div></td></tr></table><p>From <a href="index.html#ref70_128003"><b>initial activity node</b></a> To <a href="index.html#ref46_128003"><b>saisie</b></a></p></div>
+<a name="ref72_128131"></a>
+<a name="ref72_128131"></a>
+<table><tr><td><div class="element">Activity final <b></b></div></td></tr></table>
+<p>Defined in <a href="index.html#ref39_135042"><b>DA_suppr_resa</b></a></p><a name="ref70_128259"></a>
+<a name="ref70_128259"></a>
+<table><tr><td><div class="element">Initial activity node <b></b></div></td></tr></table>
+<p>Defined in <a href="index.html#ref39_135042"><b>DA_suppr_resa</b></a></p><div class="sub">
+<table><tr><td><div class="element">Flow  <b>&lt;flow&gt;</b></div></td></tr></table><p>From <a href="index.html#ref70_128259"><b>initial activity node</b></a> To <a href="index.html#ref46_128131"><b>selection_resa</b></a></p></div>
+<a name="ref72_128387"></a>
+<a name="ref72_128387"></a>
+<table><tr><td><div class="element">Activity final <b></b></div></td></tr></table>
+<p>Defined in <a href="index.html#ref39_135042"><b>DA_suppr_resa</b></a></p><a name="ref46_128131"></a>
+<table><tr><td><div class="element">Opaque activity action <b>selection_resa</b></div></td></tr></table>
+<p>Defined in <a href="index.html#ref39_135042"><b>DA_suppr_resa</b></a></p><div class="sub">
+<table><tr><td><div class="element">Flow  <b>&lt;flow&gt;</b></div></td></tr></table><p>From <a href="index.html#ref46_128131"><b>selection_resa</b></a> To <a href="index.html#ref46_128259"><b>confirmation_suppression</b></a></p><table><tr><td><div class="element">Flow  <b>&lt;flow&gt;</b></div></td></tr></table><p>From <a href="index.html#ref46_128131"><b>selection_resa</b></a> To <a href="index.html#ref73_128515"><b>decision activity node</b></a></p></div>
+<a name="ref46_128259"></a>
+<table><tr><td><div class="element">Opaque activity action <b>confirmation_suppression</b></div></td></tr></table>
+<p>Defined in <a href="index.html#ref39_135042"><b>DA_suppr_resa</b></a></p><div class="sub">
+<table><tr><td><div class="element">Flow  <b>&lt;flow&gt;</b></div></td></tr></table><p>From <a href="index.html#ref46_128259"><b>confirmation_suppression</b></a> To <a href="index.html#ref72_128387"><b>activity final</b></a></p></div>
+<a name="ref73_128515"></a>
+<a name="ref73_128515"></a>
+<table><tr><td><div class="element">Decision activity node <b></b></div></td></tr></table>
+<p>Defined in <a href="index.html#ref39_135042"><b>DA_suppr_resa</b></a></p><div class="sub">
+<table><tr><td><div class="element">Flow  <b>&lt;flow&gt;</b></div></td></tr></table><p>From <a href="index.html#ref73_128515"><b>decision activity node</b></a> To <a href="index.html#ref46_128259"><b>confirmation_suppression</b></a></p><table><tr><td><div class="element">Flow  <b>&lt;flow&gt;</b></div></td></tr></table><p>From <a href="index.html#ref73_128515"><b>decision activity node</b></a> To <a href="index.html#ref46_128387"><b>annulation_suppression</b></a></p></div>
+<a name="ref46_128387"></a>
+<table><tr><td><div class="element">Opaque activity action <b>annulation_suppression</b></div></td></tr></table>
+<p>Defined in <a href="index.html#ref39_135042"><b>DA_suppr_resa</b></a></p><div class="sub">
+<table><tr><td><div class="element">Flow  <b>&lt;flow&gt;</b></div></td></tr></table><p>From <a href="index.html#ref46_128387"><b>annulation_suppression</b></a> To <a href="index.html#ref46_128131"><b>selection_resa</b></a></p></div>
+</div>
+</div>
+<a name="ref18_134786"></a>
+<h1 class ="view">2 Class View DC_hebergement</h1>
+<div class="sub">
+<a name="ref10_135554"></a>
+<p align="center"><img src="fig135554.png" alt="" /></p>
+ <p align="center"><b>DC_hebergement</b></p><p><br /></p><p><br /></p>
+<table><tr><td><div class="element">Class <b><a href="class135938.html#ref4_135938"><b>Hebergement</b></a></b></div></td></tr></table>
+<table><tr><td><div class="element">Class <b><a href="class136066.html#ref4_136066"><b>Service</b></a></b></div></td></tr></table>
+<table><tr><td><div class="element">Class <b><a href="class136194.html#ref4_136194"><b>VIP</b></a></b></div></td></tr></table>
+<table><tr><td><div class="element">Class <b><a href="class136322.html#ref4_136322"><b>Invites</b></a></b></div></td></tr></table>
+<table><tr><td><div class="element">Class <b><a href="class136578.html#ref4_136578"><b>Reservation</b></a></b></div></td></tr></table>
+<a name="ref12_135682"></a>
+<p align="center"><img src="fig135682.png" alt="" /></p>
+ <p align="center"><b>DS_affectation_resa</b></p><p><br /></p><p><br /></p>
+<table><tr><td><div class="element">Class <b><a href="class136706.html#ref4_136706"><b>BD</b></a></b></div></td></tr></table>
+</div>
+<a name="ref21_134659"></a>
+<h1 class ="view">3 Deployment View DC_hebergement</h1>
+<div class="sub">
+<a name="ref8_135555"></a>
+<table><tr><td><div class="element">Artifact <b>Hebergement</b></div></td></tr></table>
+<p>Stereotype: source</p>
+<p>Artifact <i>source</i> associated with : <a href="class135938.html#ref4_135938"><b>Hebergement</b></a></p>
+<a name="ref8_135683"></a>
+<table><tr><td><div class="element">Artifact <b>Service</b></div></td></tr></table>
+<p>Stereotype: source</p>
+<p>Artifact <i>source</i> associated with : <a href="class136066.html#ref4_136066"><b>Service</b></a></p>
+<a name="ref8_135811"></a>
+<table><tr><td><div class="element">Artifact <b>VIP</b></div></td></tr></table>
+<p>Stereotype: source</p>
+<p>Artifact <i>source</i> associated with : <a href="class136194.html#ref4_136194"><b>VIP</b></a></p>
+<a name="ref8_135939"></a>
+<table><tr><td><div class="element">Artifact <b>Invites</b></div></td></tr></table>
+<p>Stereotype: source</p>
+<p>Artifact <i>source</i> associated with : <a href="class136322.html#ref4_136322"><b>Invites</b></a></p>
+<a name="ref8_136067"></a>
+<table><tr><td><div class="element">Artifact <b>Reservation</b></div></td></tr></table>
+<p>Stereotype: source</p>
+<p>Artifact <i>source</i> associated with : <a href="class136578.html#ref4_136578"><b>Reservation</b></a></p>
+<a name="ref8_136195"></a>
+<table><tr><td><div class="element">Artifact <b>BD</b></div></td></tr></table>
+<p>Stereotype: source</p>
+<p>Artifact <i>source</i> associated with : <a href="class136706.html#ref4_136706"><b>BD</b></a></p>
+</div>
+</body>
+</html>

@@ -41,7 +41,7 @@ format 218
   mark_for_import
   
   ncouples 3
-  key "html dir" value "C:\\Users\\arkan\\Desktop/"
+  key "html dir" value "C:\\Users\\Tristan\\Documents\\GitHub\\CPOA_propre\\code_hebergement/"
   key "check-in-cmd" value "specify the command containing %file and %dir or %dironly"
   key "check-out-cmd" value "specify the command containing %file and %dir or %dironly"
   package_ref 134658 // Analyse
