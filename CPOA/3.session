@@ -1,0 +1,15 @@
+window_sizes 1366 705 320 1041 552 104
+
+diagrams
+  active  classdiagram_ref 135554 // DC_hebergement
+    1041 552 100 A4 286 0
+end
+show_stereotypes
+marked
+  classdiagram_ref 128003 // CDC_heberegement
+end
+selected 
+  package_ref 134658 // Analyse
+open
+end
+end

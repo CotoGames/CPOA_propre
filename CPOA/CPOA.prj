@@ -1,7 +1,7 @@
 format 218
 "CPOA"
-  revision 2
-  modified_by 2 "arkan"
+  revision 6
+  modified_by 3 "Tristan"
 
 
   
@@ -40,7 +40,11 @@ format 218
 
   mark_for_import
   
-  ncouples 1
+  ncouples 3
   key "html dir" value "C:\\Users\\arkan\\Desktop/"
+  key "check-in-cmd" value "specify the command containing %file and %dir or %dironly"
+  key "check-out-cmd" value "specify the command containing %file and %dir or %dironly"
   package_ref 134658 // Analyse
+
+  package_ref 128003 // Conception
 end

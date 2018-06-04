@@ -1,7 +1,7 @@
 format 218
 "Planning" // Analyse::Planning
-  revision 1
-  modified_by 2 "arkan"
+  revision 3
+  modified_by 3 "Tristan"
   // class settings
   
   classdiagramsettings member_max_width 0 end
@@ -26,6 +26,7 @@ format 218
   activitydiagramsettings
    end
   
+  java_dir "C:\\Users\\Tristan\\Documents\\GitHub\\CPOA_propre\\code_planning"
   usecaseview 134530 "DCU_Planning"
     
     usecasediagramsettings end
@@ -193,7 +194,6 @@ ${members}}
 
       activitynode 135170 activity_final ""
       end
-
     end
 
     sequencediagram 134914 "DS_choix_emploi_temps"
@@ -314,6 +314,7 @@ ${members}}
     
     activitydiagramsettings
      end
+    associated_deployment_view deploymentview_ref 134531 // DC_Planning
     classdiagram 135042 "DC_Planning"
       classdiagramsettings draw_all_relations no member_max_width 0 end
       size A4
@@ -369,10 +370,6 @@ ${members}}
 	MysqlColumn
       end
 
-      classrelation 134658 // <aggregation>
-	relation_ref 134530 // <aggregation>
-      end
-
       attribute 135298 "idFilm"
 	unique private explicit_type "int"
 	cpp_decl ""
@@ -397,33 +394,56 @@ ${members}}
 	MysqlColumn
       end
 
-      classrelation 136578 // <aggregation>
-	relation 135682 o---
+      classrelation 137219 // <aggregation>
+	relation 135939 o---
 	  a role_name "" private
 	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
 "
-	    classrelation_ref 136578 // <aggregation>
+	    python "${comment}${self}${name} = ${value}
+"
+	    classrelation_ref 137219 // <aggregation>
 	  b role_name "" private
 	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
 "
-	    classrelation_ref 136706 // <aggregation>
+	    python "${comment}${self}${name} = ${value}
+"
+	    classrelation_ref 137347 // <aggregation>
       end
 
-      classrelation 137090 // <aggregation>
-	relation 136066 o---
+      classrelation 137475 // <aggregation>
+	relation 136067 o---
 	  a role_name "" private
 	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
 "
-	    classrelation_ref 137090 // <aggregation>
+	    python "${comment}${self}${name} = ${value}
+"
+	    classrelation_ref 137475 // <aggregation>
 	  b role_name "" private
 	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
 "
-	    classrelation_ref 137218 // <aggregation>
+	    python "${comment}${self}${name} = ${value}
+"
+	    classrelation_ref 137603 // <aggregation>
       end
 
-      classrelation 137474 // <aggregation>
-	relation_ref 136194 // <aggregation>
+      operation 134531 "Film"
+	public explicit_return_type ""
+	nparams 0
+	cpp_decl "    ${comment}${inline}${name}${(}${)}${volatile}${throw};
+"
+	cpp_def "${comment}${inline}${class}::${name}${(}${)}${volatile}${throw} {
+  ${body}}
+"
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	python_def "${@}${static}${abstract}def ${name}${(}${)}:
+${docstring}${body}
+"
+	
       end
+
     end
 
     class 134786 "Type"
@@ -451,7 +471,7 @@ ${members}}
       end
 
       attribute 135042 "Film"
-	private type class_ref 134658 // Film
+	private explicit_type "Film"
 	stereotype "list"
 	cpp_decl ""
 	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
@@ -463,20 +483,8 @@ ${members}}
 	MysqlColumn
       end
 
-      classrelation 134530 // <aggregation>
-	relation 134530 o---
-	  a role_name "" private
-	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
-"
-	    classrelation_ref 134530 // <aggregation>
-	  b role_name "" private
-	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
-"
-	    classrelation_ref 134658 // <aggregation>
-      end
-
       attribute 135170 "Jures"
-	private type class_ref 134914 // Jures
+	private explicit_type "Jures"
 	stereotype "list"
 	cpp_decl ""
 	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
@@ -501,7 +509,7 @@ ${members}}
       end
 
       attribute 136450 "Salles"
-	private type class_ref 135042 // Salle
+	private explicit_type "Salle"
 	cpp_decl ""
 	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
 "
@@ -512,20 +520,34 @@ ${members}}
 	MysqlColumn
       end
 
-      classrelation 135170 // <aggregation>
-	relation_ref 134786 // <aggregation>
+      classrelation 136579 // <aggregation>
+	relation_ref 135555 // <aggregation>
       end
 
-      classrelation 135298 // <aggregation>
-	relation 134914 o---
-	  a role_name "" private
-	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+      classrelation 137091 // <aggregation>
+	relation_ref 135811 // <aggregation>
+      end
+
+      classrelation 137603 // <aggregation>
+	relation_ref 136067 // <aggregation>
+      end
+
+      operation 134787 "Type"
+	public explicit_return_type ""
+	nparams 0
+	cpp_decl "    ${comment}${inline}${name}${(}${)}${volatile}${throw};
 "
-	    classrelation_ref 135298 // <aggregation>
-	  b role_name "" private
-	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+	cpp_def "${comment}${inline}${class}::${name}${(}${)}${volatile}${throw} {
+  ${body}}
 "
-	    classrelation_ref 135426 // <aggregation>
+	java_def "  ${comment}${@}${visibility}${final}${synchronized}${name}${(}${)}${throws} {
+  ${body}}
+"
+	
+	python_def "${@}${static}${abstract}def ${name}${(}${)}:
+${docstring}${body}
+"
+	
       end
     end
 
@@ -629,12 +651,47 @@ ${members}}
 	MysqlColumn
       end
 
-      classrelation 136450 // <generalisation>
-	relation 135554 ---|>
+      classrelation 128003 // <generalisation>
+	relation 128003 ---|>
 	  a public
 	    java "${type}"
-	    classrelation_ref 136450 // <generalisation>
+	    python "${type}"
+	    classrelation_ref 128003 // <generalisation>
 	  b parent class_ref 136194 // VIP
+      end
+
+      classrelation 136963 // <aggregation>
+	relation 135811 o---
+	  a role_name "" private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    python "${comment}${self}${name} = ${value}
+"
+	    classrelation_ref 136963 // <aggregation>
+	  b role_name "" private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    python "${comment}${self}${name} = ${value}
+"
+	    classrelation_ref 137091 // <aggregation>
+      end
+
+      operation 135171 "Jures"
+	public explicit_return_type ""
+	nparams 0
+	cpp_decl "    ${comment}${inline}${name}${(}${)}${volatile}${throw};
+"
+	cpp_def "${comment}${inline}${class}::${name}${(}${)}${volatile}${throw} {
+  ${body}}
+"
+	java_def "  ${comment}${@}${visibility}${final}${synchronized}${name}${(}${)}${throws} {
+  ${body}}
+"
+	
+	python_def "${@}${static}${abstract}def ${name}${(}${)}:
+${docstring}${body}
+"
+	
       end
     end
 
@@ -674,22 +731,6 @@ ${members}}
 	MysqlColumn
       end
 
-      classrelation 135042 // <aggregation>
-	relation 134786 o---
-	  a role_name "" private
-	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
-"
-	    classrelation_ref 135042 // <aggregation>
-	  b role_name "" private
-	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
-"
-	    classrelation_ref 135170 // <aggregation>
-      end
-
-      classrelation 135426 // <aggregation>
-	relation_ref 134914 // <aggregation>
-      end
-
       attribute 136578 "nombre_places"
 	private explicit_type "int"
 	cpp_decl ""
@@ -702,24 +743,8 @@ ${members}}
 	MysqlColumn
       end
 
-      classrelation 135682 // <aggregation>
-	relation_ref 135042 // <aggregation>
-      end
-
-      classrelation 135810 // <aggregation>
-	relation 135170 o---
-	  a role_name "" private
-	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
-"
-	    classrelation_ref 135810 // <aggregation>
-	  b role_name "" private
-	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
-"
-	    classrelation_ref 135938 // <aggregation>
-      end
-
       attribute 136962 "Creneaux"
-	private type class_ref 135170 // Creneaux
+	private explicit_type "Creneaux"
 	stereotype "list"
 	cpp_decl ""
 	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
@@ -729,6 +754,44 @@ ${members}}
 	idl_decl ""
 	mysql_decl ""
 	MysqlColumn
+      end
+
+      classrelation 136323 // <aggregation>
+	relation_ref 135427 // <aggregation>
+      end
+
+      classrelation 136451 // <aggregation>
+	relation 135555 o---
+	  a role_name "" multiplicity "1..2" private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${stereotype}<${type}> ${name}${value};
+"
+	    python "${comment}${self}${name} = ${stereotype}()
+"
+	    classrelation_ref 136451 // <aggregation>
+	  b role_name "" private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    python "${comment}${self}${name} = ${value}
+"
+	    classrelation_ref 136579 // <aggregation>
+      end
+
+      operation 135043 "Salle"
+	public explicit_return_type ""
+	nparams 0
+	cpp_decl "    ${comment}${inline}${name}${(}${)}${volatile}${throw};
+"
+	cpp_def "${comment}${inline}${class}::${name}${(}${)}${volatile}${throw} {
+  ${body}}
+"
+	java_def "  ${comment}${@}${visibility}${final}${synchronized}${name}${(}${)}${throws} {
+  ${body}}
+"
+	
+	python_def "${@}${static}${abstract}def ${name}${(}${)}:
+${docstring}${body}
+"
+	
       end
     end
 
@@ -744,22 +807,6 @@ ${members}}
       explicit_switch_type ""
       mysql_decl ""
       
-      classrelation 135554 // <aggregation>
-	relation 135042 o---
-	  a role_name "" private
-	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
-"
-	    classrelation_ref 135554 // <aggregation>
-	  b role_name "" private
-	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
-"
-	    classrelation_ref 135682 // <aggregation>
-      end
-
-      classrelation 135938 // <aggregation>
-	relation_ref 135170 // <aggregation>
-      end
-
       attribute 137090 "idCreneaux"
 	unique private explicit_type "int"
 	cpp_decl ""
@@ -782,6 +829,40 @@ ${members}}
 	idl_decl ""
 	mysql_decl ""
 	MysqlColumn
+      end
+
+      classrelation 136195 // <aggregation>
+	relation 135427 o---
+	  a role_name "" private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    python "${comment}${self}${name} = ${value}
+"
+	    classrelation_ref 136195 // <aggregation>
+	  b role_name "" private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    python "${comment}${self}${name} = ${value}
+"
+	    classrelation_ref 136323 // <aggregation>
+      end
+
+      operation 134915 "Creneaux"
+	public explicit_return_type ""
+	nparams 0
+	cpp_decl "    ${comment}${inline}${name}${(}${)}${volatile}${throw};
+"
+	cpp_def "${comment}${inline}${class}::${name}${(}${)}${volatile}${throw} {
+  ${body}}
+"
+	java_def "  ${comment}${@}${visibility}${final}${synchronized}${name}${(}${)}${throws} {
+  ${body}}
+"
+	
+	python_def "${@}${static}${abstract}def ${name}${(}${)}:
+${docstring}${body}
+"
+	
       end
     end
 
@@ -879,20 +960,8 @@ ${members}}
 	MysqlColumn
       end
 
-      classrelation 136706 // <aggregation>
-	relation_ref 135682 // <aggregation>
-      end
-
-      classrelation 136962 // <generalisation>
-	relation 135938 ---|>
-	  a public
-	    java "${type}"
-	    classrelation_ref 136962 // <generalisation>
-	  b parent class_ref 136194 // VIP
-      end
-
       attribute 139650 "film"
-	private type class_ref 134658 // Film
+	private explicit_type "Film"
 	cpp_decl ""
 	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
 "
@@ -903,20 +972,140 @@ ${members}}
 	MysqlColumn
       end
 
-      classrelation 137218 // <aggregation>
-	relation_ref 136066 // <aggregation>
+      classrelation 128643 // <generalisation>
+	relation 128387 ---|>
+	  a public
+	    java "${type}"
+	    python "${type}"
+	    classrelation_ref 128643 // <generalisation>
+	  b parent class_ref 136194 // VIP
       end
 
-      classrelation 137346 // <aggregation>
-	relation 136194 o---
-	  a role_name "" private
-	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+      classrelation 137347 // <aggregation>
+	relation_ref 135939 // <aggregation>
+      end
+
+      operation 135299 "staff_film"
+	public explicit_return_type ""
+	nparams 0
+	cpp_decl "    ${comment}${inline}${name}${(}${)}${volatile}${throw};
 "
-	    classrelation_ref 137346 // <aggregation>
-	  b role_name "" private
-	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+	cpp_def "${comment}${inline}${class}::${name}${(}${)}${volatile}${throw} {
+  ${body}}
 "
-	    classrelation_ref 137474 // <aggregation>
+	java_def "  ${comment}${@}${visibility}${final}${synchronized}${name}${(}${)}${throws} {
+  ${body}}
+"
+	
+	python_def "${@}${static}${abstract}def ${name}${(}${)}:
+${docstring}${body}
+"
+	
+      end
+    end
+  end
+
+  simplerelation 128003
+    ---|>
+      on 
+      package_ref 134786 // Herbergement
+  end
+
+  simplerelation 128131
+    -_->
+      on 
+      package_ref 134786 // Herbergement
+  end
+
+  deploymentview 134531 "DC_Planning"
+    //deployment diagram settings
+    deploymentdiagramsettings
+     end
+    artifact 134531 "Film"
+      stereotype "source"
+      java_src "${comment}
+${package}
+${imports}
+${definition}"
+      associated_elems
+	class_ref 134658 // Film
+      end
+    end
+
+    artifact 134659 "Type"
+      stereotype "source"
+      java_src "${comment}
+${package}
+${imports}
+${definition}"
+      associated_elems
+	class_ref 134786 // Type
+      end
+    end
+
+    artifact 134787 "Jures"
+      stereotype "source"
+      java_src "${comment}
+${package}
+${imports}
+${definition}"
+      associated_elems
+	class_ref 134914 // Jures
+      end
+    end
+
+    artifact 134915 "Salle"
+      stereotype "source"
+      java_src "${comment}
+${package}
+${imports}
+${definition}"
+      associated_elems
+	class_ref 135042 // Salle
+      end
+    end
+
+    artifact 135043 "Creneaux"
+      stereotype "source"
+      java_src "${comment}
+${package}
+${imports}
+${definition}"
+      associated_elems
+	class_ref 135170 // Creneaux
+      end
+    end
+
+    artifact 135171 "IHM"
+      stereotype "source"
+      java_src "${comment}
+${package}
+${imports}
+${definition}"
+      associated_elems
+	class_ref 135298 // IHM
+      end
+    end
+
+    artifact 135299 "Systeme"
+      stereotype "source"
+      java_src "${comment}
+${package}
+${imports}
+${definition}"
+      associated_elems
+	class_ref 135426 // Systeme
+      end
+    end
+
+    artifact 135427 "staff_film"
+      stereotype "source"
+      java_src "${comment}
+${package}
+${imports}
+${definition}"
+      associated_elems
+	class_ref 136450 // staff_film
       end
     end
   end

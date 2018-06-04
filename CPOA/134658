@@ -1,7 +1,7 @@
 format 218
 "Analyse" // Analyse
-  revision 1
-  modified_by 2 "arkan"
+  revision 2
+  modified_by 3 "Tristan"
   // class settings
   
   classdiagramsettings member_max_width 0 end
@@ -47,7 +47,7 @@ format 218
     activitydiagramsettings
      end
     classdiagram 134530 "DP_Analyse"
-      classdiagramsettings member_max_width 0 end
+      classdiagramsettings draw_all_relations no member_max_width 0 end
       size A4
     end
   end

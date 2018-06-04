@@ -5,16 +5,16 @@ classcanvas 128002 class_ref 134530 // Planificateur
   color darkblue xyz 67.6 306.8 2000
 end
 usecasecanvas 128130 usecase_ref 134530 // Choisir type emploi du temps
-  xyzwh 319 252.8 3005 64 32 label_xy 267 284
+  xyzwh 319 252 3005 64 32 label_xy 267 284
 end
 usecasecanvas 128258 usecase_ref 134658 // Inserer film
-  xyzwh 311.2 338.3 3005 64 32 label_xy 311 369
+  xyzwh 311 338 3005 64 32 label_xy 311 369
 end
 usecasecanvas 128386 usecase_ref 134786 // Modifier emploi du temps
-  xyzwh 321.2 485 3005 64 32 label_xy 280 516
+  xyzwh 321 485 3005 64 32 label_xy 280 516
 end
 usecasecanvas 128514 usecase_ref 134914 // Supprimer film
-  xyzwh 313.4 411.7 3005 64 32 label_xy 303 443
+  xyzwh 313 411 3005 64 32 label_xy 303 443
 end
 subject 128642 ""
   color blue  xyzwh 231.9 201.8 2000 236 395

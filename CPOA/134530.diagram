@@ -1,11 +1,14 @@
 format 218
 
-packagecanvas 128002 
+packagecanvas 132611 
   package_ref 134786 // Herbergement
-    xyzwh 581.7 389.4 2000 133 111
+    xyzwh 534 313 2000 153 115
 end
-packagecanvas 128130 
+packagecanvas 132739 
   package_ref 134914 // Planning
-    xyzwh 572.5 156 2000 127 109
+    xyzwh 498 101 2005 153 117
+end
+simplerelationcanvas 132995 simplerelation_ref 128131
+  from ref 132739 z 2006 to ref 132611
 end
 end

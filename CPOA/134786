@@ -1,7 +1,7 @@
 format 218
 "Herbergement" // Analyse::Herbergement
-  revision 1
-  modified_by 2 "arkan"
+  revision 3
+  modified_by 3 "Tristan"
   // class settings
   
   classdiagramsettings member_max_width 0 end
@@ -204,11 +204,71 @@ ${members}}
        end
     end
 
-    activity 135042 "DA_saisie_carac"
-      activitydiagram 135810 "DA_saisie_carac"
-	activitydiagramsettings
+    activity 135042 "DA_suppr_resa"
+      activitydiagram 135810 "DA_suppr_resa"
+	activitydiagramsettings draw_all_relations no
 	 end
 	size A4
+      end
+
+      activityaction 128003 "saisie"
+	opaque_action
+	flow 128131 "<flow>"
+	  on activitynode_ref 128131 // activity_final
+	end
+      end
+
+      activitynode 128003 initial_node ""
+	flow 128003 "<flow>"
+	  on activityaction_ref 128003 // activity action saisie
+	end
+      end
+
+      activitynode 128131 activity_final ""
+      end
+
+      activitynode 128259 initial_node ""
+	flow 128259 "<flow>"
+	  on activityaction_ref 128131 // activity action selection_resa
+	end
+      end
+
+      activitynode 128387 activity_final ""
+      end
+
+      activityaction 128131 "selection_resa"
+	opaque_action
+	flow 128387 "<flow>"
+	  on activityaction_ref 128259 // activity action confirmation_suppression
+	end
+
+	flow 128515 "<flow>"
+	  on activitynode_ref 128515 // decision
+	end
+      end
+
+      activityaction 128259 "confirmation_suppression"
+	opaque_action
+	flow 129027 "<flow>"
+	  on activitynode_ref 128387 // activity_final
+	end
+      end
+
+      activitynode 128515 decision ""
+	flow 128643 "<flow>"
+	  on activityaction_ref 128259 // activity action confirmation_suppression
+	end
+
+	flow 128771 "<flow>"
+	  on activityaction_ref 128387 // activity action annulation_suppression
+	end
+      end
+
+      activityaction 128387 "annulation_suppression"
+	opaque_action
+	flow 128899 "<flow>"
+	  on activityaction_ref 128131 // activity action selection_resa
+	end
       end
     end
   end
@@ -271,7 +331,7 @@ ${members}}
       end
 
       attribute 137986 "services"
-	private type class_ref 136066 // Service
+	private explicit_type "Service"
 	stereotype "list"
 	cpp_decl ""
 	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
@@ -281,18 +341,6 @@ ${members}}
 	idl_decl ""
 	mysql_decl ""
 	MysqlColumn
-      end
-
-      classrelation 136066 // <aggregation>
-	relation 135298 o---
-	  a role_name "" private
-	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
-"
-	    classrelation_ref 136066 // <aggregation>
-	  b role_name "" private
-	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
-"
-	    classrelation_ref 136194 // <aggregation>
       end
 
       attribute 138114 "nb_places"
@@ -308,7 +356,7 @@ ${members}}
       end
 
       attribute 138370 "reservation"
-	private type class_ref 136194 // VIP
+	private explicit_type "VIP"
 	stereotype "list"
 	cpp_decl ""
 	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
@@ -320,32 +368,34 @@ ${members}}
 	MysqlColumn
       end
 
-      classrelation 137602 // <association>
-	relation 136322 ----
-	  a role_name "" multiplicity "*" private
-	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${stereotype}<${type}> ${name}${value};
-"
-	    classrelation_ref 137602 // <association>
-	  b role_name "" multiplicity "1" private
-	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
-"
-	    classrelation_ref 137730 // <association>
+      classrelation 135555 // <aggregation>
+	relation_ref 135043 // <aggregation>
       end
 
-      classrelation 138242 // <aggregation>
-	relation_ref 136578 // <aggregation>
+      classrelation 135811 // <aggregation>
+	relation_ref 135171 // <aggregation>
       end
 
-      classrelation 138370 // <aggregation>
-	relation 136706 o---
-	  a role_name "" private
-	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+      operation 135811 "Hebergement"
+	public explicit_return_type ""
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${name}${(}${)}${const}${volatile}${throw}${abstract};
 "
-	    classrelation_ref 138370 // <aggregation>
-	  b role_name "" private
-	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+	cpp_def "${comment}${inline}${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
 "
-	    classrelation_ref 138498 // <aggregation>
+	java_def "  ${comment}${@}${visibility}${final}${synchronized}${name}${(}${)}${throws} {
+  ${body}}
+"
+	php_def "  ${comment}${final}${visibility}${abstract}function ${name}${(}${)}${type}
+{
+  ${body}}
+"
+	python_def "${@}${static}${abstract}def ${name}${(}${)}:
+${docstring}${body}
+"
+	idl_decl "  ${comment}${oneway}factory init_${name}${(}${)}${raisesnl}${raises};
+"
       end
     end
 
@@ -385,8 +435,42 @@ ${members}}
 	MysqlColumn
       end
 
-      classrelation 136194 // <aggregation>
-	relation_ref 135298 // <aggregation>
+      classrelation 135683 // <aggregation>
+	relation 135171 o---
+	  a role_name "" private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    python "${comment}${self}${name} = ${value}
+"
+	    classrelation_ref 135683 // <aggregation>
+	  b role_name "" private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    python "${comment}${self}${name} = ${value}
+"
+	    classrelation_ref 135811 // <aggregation>
+      end
+
+      operation 135427 "Service"
+	public explicit_return_type ""
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	java_def "  ${comment}${@}${visibility}${final}${synchronized}${name}${(}${)}${throws} {
+  ${body}}
+"
+	php_def "  ${comment}${final}${visibility}${abstract}function ${name}${(}${)}${type}
+{
+  ${body}}
+"
+	python_def "${@}${static}${abstract}def ${name}${(}${)}:
+${docstring}${body}
+"
+	idl_decl "  ${comment}${oneway}factory init_${name}${(}${)}${raisesnl}${raises};
+"
       end
     end
 
@@ -402,12 +486,20 @@ ${members}}
       explicit_switch_type ""
       mysql_decl ""
       
-      classrelation 137730 // <association>
-	relation_ref 136322 // <association>
-      end
-
-      classrelation 137986 // <association>
-	relation_ref 136450 // <association>
+      classrelation 135939 // <aggregation>
+	relation 135299 o---
+	  a role_name "" private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    python "${comment}${self}${name} = ${value}
+"
+	    classrelation_ref 135939 // <aggregation>
+	  b role_name "" private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    python "${comment}${self}${name} = ${value}
+"
+	    classrelation_ref 136067 // <aggregation>
       end
     end
 
@@ -479,6 +571,28 @@ ${members}}
 	    classrelation_ref 136834 // <generalisation>
 	  b parent class_ref 136194 // VIP
       end
+
+      operation 135555 "Invites"
+	public explicit_return_type ""
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	java_def "  ${comment}${@}${visibility}${final}${synchronized}${name}${(}${)}${throws} {
+  ${body}}
+"
+	php_def "  ${comment}${final}${visibility}${abstract}function ${name}${(}${)}${type}
+{
+  ${body}}
+"
+	python_def "${@}${static}${abstract}def ${name}${(}${)}:
+${docstring}${body}
+"
+	idl_decl "  ${comment}${oneway}factory init_${name}${(}${)}${raisesnl}${raises};
+"
+      end
     end
 
     class 136578 "Reservation"
@@ -542,36 +656,8 @@ ${members}}
 	MysqlColumn
       end
 
-      classrelation 137858 // <association>
-	relation 136450 ----
-	  a role_name "" multiplicity "1..*" private
-	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${stereotype}<${type}> ${name}${value};
-"
-	    classrelation_ref 137858 // <association>
-	  b role_name "" multiplicity "1" private
-	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
-"
-	    classrelation_ref 137986 // <association>
-      end
-
-      classrelation 138114 // <aggregation>
-	relation 136578 o---
-	  a role_name "" private
-	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
-"
-	    classrelation_ref 138114 // <aggregation>
-	  b role_name "" private
-	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
-"
-	    classrelation_ref 138242 // <aggregation>
-      end
-
-      classrelation 138498 // <aggregation>
-	relation_ref 136706 // <aggregation>
-      end
-
       attribute 140290 "VIP"
-	private type class_ref 136194 // VIP
+	private explicit_type "VIP"
 	stereotype "list"
 	cpp_decl ""
 	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
@@ -583,13 +669,46 @@ ${members}}
 	MysqlColumn
       end
 
-      classrelation 138626 // <directional aggregation>
-	relation 136834 o-->
+      classrelation 135427 // <aggregation>
+	relation 135043 o---
 	  a role_name "" private
 	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
 "
-	    classrelation_ref 138626 // <directional aggregation>
-	  b parent class_ref 136194 // VIP
+	    python "${comment}${self}${name} = ${value}
+"
+	    classrelation_ref 135427 // <aggregation>
+	  b role_name "" private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    python "${comment}${self}${name} = ${value}
+"
+	    classrelation_ref 135555 // <aggregation>
+      end
+
+      classrelation 136067 // <aggregation>
+	relation_ref 135299 // <aggregation>
+      end
+
+      operation 135683 "Reservation"
+	public explicit_return_type ""
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	java_def "  ${comment}${@}${visibility}${final}${synchronized}${name}${(}${)}${throws} {
+  ${body}}
+"
+	php_def "  ${comment}${final}${visibility}${abstract}function ${name}${(}${)}${type}
+{
+  ${body}}
+"
+	python_def "${@}${static}${abstract}def ${name}${(}${)}:
+${docstring}${body}
+"
+	idl_decl "  ${comment}${oneway}factory init_${name}${(}${)}${raisesnl}${raises};
+"
       end
     end
 
@@ -612,5 +731,4 @@ ${members}}
       
     end
   end
-
 end
