@@ -26,6 +26,8 @@ format 218
   activitydiagramsettings
    end
   
+  java_dir "C:\\Users\\Tristan\\Documents\\GitHub\\CPOA_propre\\code_panning"
+  python_dir "C:\\Users\\Tristan\\Documents\\GitHub\\CPOA_propre\\code_hebergement"
   usecaseview 134658 "DCU_herbergement"
     
     usecasediagramsettings end
@@ -289,6 +291,7 @@ ${members}}
     
     activitydiagramsettings
      end
+    associated_deployment_view deploymentview_ref 134659 // DC_hebergement
     classdiagram 135554 "DC_hebergement"
       classdiagramsettings draw_all_relations no member_max_width 0 end
       size A4
@@ -729,6 +732,77 @@ ${members}}
       explicit_switch_type ""
       mysql_decl ""
       
+    end
+  end
+
+  deploymentview 134659 "DC_hebergement"
+    //deployment diagram settings
+    deploymentdiagramsettings
+     end
+    artifact 135555 "Hebergement"
+      stereotype "source"
+      java_src "${comment}
+${package}
+${imports}
+${definition}"
+      associated_elems
+	class_ref 135938 // Hebergement
+      end
+    end
+
+    artifact 135683 "Service"
+      stereotype "source"
+      java_src "${comment}
+${package}
+${imports}
+${definition}"
+      associated_elems
+	class_ref 136066 // Service
+      end
+    end
+
+    artifact 135811 "VIP"
+      stereotype "source"
+      java_src "${comment}
+${package}
+${imports}
+${definition}"
+      associated_elems
+	class_ref 136194 // VIP
+      end
+    end
+
+    artifact 135939 "Invites"
+      stereotype "source"
+      java_src "${comment}
+${package}
+${imports}
+${definition}"
+      associated_elems
+	class_ref 136322 // Invites
+      end
+    end
+
+    artifact 136067 "Reservation"
+      stereotype "source"
+      java_src "${comment}
+${package}
+${imports}
+${definition}"
+      associated_elems
+	class_ref 136578 // Reservation
+      end
+    end
+
+    artifact 136195 "BD"
+      stereotype "source"
+      java_src "${comment}
+${package}
+${imports}
+${definition}"
+      associated_elems
+	class_ref 136706 // BD
+      end
     end
   end
 end
