@@ -11,7 +11,31 @@ public class Type {
 
   private ArrayList<Salle> Salles;
 
-  public Type() {
-  }
+    public Type(int idType) {
+        this.idType = idType;
+        ArrayList<Film> Film = new ArrayList<Film>();
+        ArrayList<Jures> Jures = new ArrayList<Jures>();
+        ArrayList<Salle> Salle = new ArrayList<Salle>();
+    }
+
+    public int getIdType() {
+        return idType;
+    }
+
+    public void setIdType(int idType) {
+        this.idType = idType;
+    }
+
+    public ArrayList<Film> getFilm() {
+        return Film;
+    }
+
+    public ArrayList<Jures> getJures() {
+        return Jures;
+    }
+
+    public ArrayList<Salle> getSalles() {
+        return Salles;
+    }
 
 }
