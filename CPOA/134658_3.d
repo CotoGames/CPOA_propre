@@ -1,0 +1,29 @@
+format 218
+
+classcanvas 128002 class_ref 134530 // Planificateur
+  simpleclassdiagramsettings class_drawing_mode actor end
+  color darkblue xyz 99.6 343.8 2000
+end
+usecasecanvas 128130 usecase_ref 134530 // Choisir type emploi du temps
+  xyzwh 319 252 3005 64 32 label_xy 267 284
+end
+usecasecanvas 128258 usecase_ref 134658 // Inserer film
+  xyzwh 317 340 3005 64 32 label_xy 317 371
+end
+usecasecanvas 128386 usecase_ref 134786 // Modifier emploi du temps
+  xyzwh 321 485 3005 64 32 label_xy 280 516
+end
+usecasecanvas 128514 usecase_ref 134914 // Supprimer film
+  xyzwh 320 412 3005 64 32 label_xy 310 444
+end
+subject 128642 ""
+  color blue  xyzwh 231.9 201.8 2000 236 395
+line 128770 ----
+  from ref 128002 z 3006 to ref 128130
+line 128898 ----
+  from ref 128002 z 3006 to ref 128258
+line 129026 ----
+  from ref 128002 z 3006 to ref 128514
+line 129154 ---- decenter_begin 865
+  from ref 128002 z 3006 to ref 128386
+end

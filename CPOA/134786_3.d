@@ -1,0 +1,70 @@
+format 218
+
+activitynodecanvas 128002 activitynode_ref 134530 // initial_node
+  xyz 165.4 491.5 2000
+end
+activityobjectcanvas 128514 activityobject_ref 134658 // activity object Choix du type de generation
+  
+  xyzwh 87.4 417.8 2000 179 33
+end
+activityobjectcanvas 128898 activityobject_ref 134786 // activity object Generation
+  
+  xyzwh 61.3 217.9 2000 79 33
+end
+activityobjectcanvas 129282 activityobject_ref 134914 // activity object Generation
+  
+  xyzwh 198.3 213.7 2000 79 33
+end
+activitynodecanvas 130050 activitynode_ref 134914 // decision
+  xyz 160.3 328.9 2000
+end
+textcanvas 130690 "[salle]
+"
+  xyzwh 207 291 2006 45 25
+textcanvas 130818 "[type de film]
+"
+  xyzwh 48 286 2006 83 26
+activitynodecanvas 130946 activitynode_ref 135042 // join
+  horizontal  xyzwh 127.6 94.4 2000 95 15
+end
+activitynodecanvas 131330 activitynode_ref 135170 // activity_final
+  xyz 163 26 2000
+end
+flowcanvas 128642 flow_ref 134530 // <flow>
+  
+  from ref 128002 z 2001 to ref 128514
+   write_horizontally default
+end
+flowcanvas 130178 flow_ref 135426 // <flow>
+  decenter_end 639
+  
+  from ref 128514 z 2001 to ref 130050
+   write_horizontally default
+end
+flowcanvas 130306 flow_ref 135554 // <flow>
+  
+  from ref 130050 z 2001 to ref 128898
+   write_horizontally default
+end
+flowcanvas 130434 flow_ref 135682 // <flow>
+  
+  from ref 130050 z 2001 to ref 129282
+   write_horizontally default
+end
+flowcanvas 131074 flow_ref 135810 // <flow>
+  
+  from ref 128898 z 2001 to ref 130946
+   write_horizontally default
+end
+flowcanvas 131202 flow_ref 135938 // <flow>
+  
+  from ref 129282 z 2001 to ref 130946
+   write_horizontally default
+end
+flowcanvas 131458 flow_ref 136066 // <flow>
+  decenter_begin 504
+  
+  from ref 130946 z 2001 to ref 131330
+   write_horizontally default
+end
+end

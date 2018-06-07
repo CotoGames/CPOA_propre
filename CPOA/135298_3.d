@@ -1,0 +1,120 @@
+format 218
+
+activitynodecanvas 128002 activitynode_ref 135298 // initial_node
+  xyz 404.3 830.9 2000
+end
+activityactioncanvas 128130 activityaction_ref 134658 // activity action entrer_film
+  
+  show_opaque_action_definition default
+  xyzwh 96.6 540 2000 101 61
+end
+activityactioncanvas 128642 activityaction_ref 134786 // activity action entrer_realisateur
+  
+  show_opaque_action_definition default
+  xyzwh 274.1 538 2000 115 65
+end
+activityactioncanvas 128770 activityaction_ref 134914 // activity action entrer_duree
+  
+  show_opaque_action_definition default
+  xyzwh 448.8 538.8 2000 101 61
+end
+activityactioncanvas 128898 activityaction_ref 135042 // activity action choix_type
+  
+  show_opaque_action_definition default
+  xyzwh 614.4 539.9 2000 101 61
+end
+activitynodecanvas 129154 activitynode_ref 135554 // fork
+  xyz 492 476 2005
+end
+activitynodecanvas 129282 activitynode_ref 135682 // fork
+  horizontal  xyzwh 103 680.4 2000 625 15
+end
+activityactioncanvas 130050 activityaction_ref 135170 // activity action choix_creneaux_salle
+  
+  show_opaque_action_definition default
+  xyzwh 595.2 388.6 2000 155 77
+end
+activitynodecanvas 130306 activitynode_ref 135810 // join
+  horizontal  xyzwh 165.4 300.4 2000 525 15
+end
+activityactioncanvas 131842 activityaction_ref 135298 // activity action Valider
+  
+  show_opaque_action_definition default
+  xyzwh 380 146.6 2000 101 61
+end
+activitynodecanvas 132098 activitynode_ref 135938 // activity_final
+  xyz 419.1 40.2 2000
+end
+flowcanvas 129410 flow_ref 136450 // <flow>
+  
+  from ref 128002 z 2001 to ref 129282
+   write_horizontally default
+end
+flowcanvas 129538 flow_ref 136578 // <flow>
+  decenter_begin 67
+  
+  from ref 129282 z 2001 to ref 128130
+   write_horizontally default
+end
+flowcanvas 129666 flow_ref 136706 // <flow>
+  decenter_begin 365
+  
+  from ref 129282 z 2001 to ref 128642
+   write_horizontally default
+end
+flowcanvas 129794 flow_ref 136834 // <flow>
+  decenter_begin 628
+  
+  from ref 129282 z 2001 to ref 128770
+   write_horizontally default
+end
+flowcanvas 129922 flow_ref 136962 // <flow>
+  decenter_begin 897
+  
+  from ref 129282 z 2001 to ref 128898
+   write_horizontally default
+end
+flowcanvas 130178 flow_ref 137090 // <flow>
+  decenter_begin 578
+  
+  from ref 128898 z 2001 to ref 130050
+   write_horizontally default
+end
+flowcanvas 130434 flow_ref 137218 // <flow>
+  decenter_end 37
+  
+  from ref 128130 z 2001 to ref 130306
+   write_horizontally default
+end
+flowcanvas 131330 flow_ref 137346 // <flow>
+  decenter_end 328
+  
+  from ref 128642 z 2001 to ref 130306
+   write_horizontally default
+end
+flowcanvas 131458 flow_ref 137474 // <flow>
+  decenter_begin 418
+  decenter_end 620
+  
+  from ref 128770 z 2001 to ref 130306
+   write_horizontally default
+end
+flowcanvas 131586 flow_ref 137602 // <flow>
+  decenter_begin 483
+  decenter_end 961
+  
+  from ref 130050 z 2001 to ref 130306
+   write_horizontally default
+end
+flowcanvas 131970 flow_ref 137730 // <flow>
+  
+  from ref 130306 z 2001 to ref 131842
+   write_horizontally default
+end
+flowcanvas 132226 flow_ref 137858 // <flow>
+  decenter_begin 578
+  
+  from ref 131842 z 2001 to ref 132098
+   write_horizontally default
+end
+end
