@@ -2,27 +2,43 @@ window_sizes 1366 705 320 1041 552 104
 
 diagrams
   classdiagram_ref 135554 // DC_hebergement
-    1041 552 100 A4 238 0
+    1041 552 100 A4 82 0
   classdiagram_ref 135042 // DC_Planning
-    1041 552 69 A4 72 0
+    1041 552 68 A4 60 0
   usecasediagram_ref 135426 // DCU_hebergement
-    114 98 100 A4 192 0
+    114 98 100 A4 168 0
   sequencediagram_ref 135682 // DS_affectation_resa
     114 98 100 A4 0 0
   classdiagram_ref 128131 // CDC_Planning
     1041 552 90 A4 0 0
-  active  classdiagram_ref 128003 // CDC_heberegement
-    1041 552 69 A4 0 0
+  classdiagram_ref 128003 // CDC_heberegement
+    1041 552 68 A4 0 0
+  activitydiagram_ref 135810 // DA_suppr_resa
+    114 98 100 A4 0 0
+  sequencediagram_ref 134659 // FSD_Alt
+    114 98 100 A4 0 0
+  usecasediagram_ref 134658 // DCU_Planning
+    114 98 100 A4 132 0
+  active  activitydiagram_ref 134786 // DA_choix_emploi_du_temps
+    1041 552 100 A4 326 0
+  sequencediagram_ref 134914 // DS_choix_emploi_temps_salle
+    114 98 100 A4 0 0
+  sequencediagram_ref 134787 // DS_choix_emploi_temps_type
+    114 98 100 A4 32 0
+  activitydiagram_ref 135298 // DA_Insertion
+    114 98 100 A4 0 0
+  classdiagram_ref 134530 // DP_Analyse
+    114 98 100 A4 48 0
 end
 show_stereotypes
-selected operation_ref 159875 // + getReservation
+selected 
+  package_ref 129 // CPOA
 open
-  class_ref 135938 // Hebergement
-  class_ref 136066 // Service
-  class_ref 136322 // Invites
-  class_ref 136578 // Reservation
   
-  package_ref 134914 // Planning
+  package_ref 134786 // Herbergement
+  activity_ref 134530 // type_emploi_du_temps
+  classview_ref 134658 // DC_Planning
+  classview_ref 134530 // DP_Analyse
   classview_ref 128003 // DC_hebergement
 end
 end
