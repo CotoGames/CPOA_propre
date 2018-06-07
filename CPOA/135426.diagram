@@ -2,15 +2,15 @@ format 218
 
 classcanvas 128387 class_ref 135554 // responsable
   simpleclassdiagramsettings end
-  xyz 46 287 2000
+  xyz 120 394 2000
 end
 classcanvas 128515 class_ref 135682 // gerant_hotel
   simpleclassdiagramsettings end
-  xyz 143 192 2000
+  xyz 116 213 2000
 end
 classcanvas 128643 class_ref 135810 // systeme
   simpleclassdiagramsettings end
-  xyz 785 286 2000
+  xyz 710 294 2000
 end
 usecasecanvas 128771 usecase_ref 135042 // saisie_caracteristique
   xyzwh 321 280 3005 64 32 label_xy 290 312

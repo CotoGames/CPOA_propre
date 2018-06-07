@@ -1,6 +1,6 @@
 format 218
 "Herbergement" // Analyse::Herbergement
-  revision 5
+  revision 6
   modified_by 3 "Tristan"
   // class settings
   
@@ -62,6 +62,11 @@ ${members}}
       explicit_switch_type ""
       mysql_decl ""
       
+      simplerelation 134787
+	-_->
+	  on 
+	  package_ref 134786 // Herbergement
+      end
     end
 
     class 135682 "gerant_hotel"
@@ -76,6 +81,11 @@ ${members}}
       explicit_switch_type ""
       mysql_decl ""
       
+      simplerelation 134915
+	-_->
+	  on 
+	  package_ref 134786 // Herbergement
+      end
     end
 
     usecase 135042 "saisie_caracteristique"
@@ -206,73 +216,6 @@ ${members}}
        end
     end
 
-    activity 135042 "DA_suppr_resa"
-      activitydiagram 135810 "DA_suppr_resa"
-	activitydiagramsettings draw_all_relations no
-	 end
-	size A4
-      end
-
-      activityaction 128003 "saisie"
-	opaque_action
-	flow 128131 "<flow>"
-	  on activitynode_ref 128131 // activity_final
-	end
-      end
-
-      activitynode 128003 initial_node ""
-	flow 128003 "<flow>"
-	  on activityaction_ref 128003 // activity action saisie
-	end
-      end
-
-      activitynode 128131 activity_final ""
-      end
-
-      activitynode 128259 initial_node ""
-	flow 128259 "<flow>"
-	  on activityaction_ref 128131 // activity action selection_resa
-	end
-      end
-
-      activitynode 128387 activity_final ""
-      end
-
-      activityaction 128131 "selection_resa"
-	opaque_action
-	flow 128387 "<flow>"
-	  on activityaction_ref 128259 // activity action confirmation_suppression
-	end
-
-	flow 128515 "<flow>"
-	  on activitynode_ref 128515 // decision
-	end
-      end
-
-      activityaction 128259 "confirmation_suppression"
-	opaque_action
-	flow 129027 "<flow>"
-	  on activitynode_ref 128387 // activity_final
-	end
-      end
-
-      activitynode 128515 decision ""
-	flow 128643 "<flow>"
-	  on activityaction_ref 128259 // activity action confirmation_suppression
-	end
-
-	flow 128771 "<flow>"
-	  on activityaction_ref 128387 // activity action annulation_suppression
-	end
-      end
-
-      activityaction 128387 "annulation_suppression"
-	opaque_action
-	flow 128899 "<flow>"
-	  on activityaction_ref 128131 // activity action selection_resa
-	end
-      end
-    end
   end
 
   classview 134786 "DC_hebergement"
@@ -1258,6 +1201,11 @@ ${members}}
       explicit_switch_type ""
       mysql_decl ""
       
+    end
+
+    sequencediagram 134659 "FSD_Alt"
+      sequencediagramsettings end
+      overlapping_bars size A4
     end
   end
 

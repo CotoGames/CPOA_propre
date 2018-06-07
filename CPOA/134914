@@ -1,6 +1,6 @@
 format 218
 "Planning" // Analyse::Planning
-  revision 6
+  revision 7
   modified_by 3 "Tristan"
   // class settings
   
@@ -61,6 +61,11 @@ ${members}}
       explicit_switch_type ""
       mysql_decl ""
       
+      simplerelation 134659
+	-_->
+	  on 
+	  package_ref 134914 // Planning
+      end
     end
 
     usecase 134530 "Choisir type emploi du temps"
@@ -196,7 +201,7 @@ ${members}}
       end
     end
 
-    sequencediagram 134914 "DS_choix_emploi_temps"
+    sequencediagram 134914 "DS_choix_emploi_temps_salle"
       sequencediagramsettings end
       overlapping_bars size A4
     end
@@ -295,6 +300,19 @@ ${members}}
 
       activitynode 135938 activity_final ""
       end
+    end
+
+    classinstance 128003 "Systeme"
+      type class_ref 135426 // Systeme
+      attributes
+        end
+      relations
+        end
+    end
+
+    sequencediagram 134787 "DS_choix_emploi_temps_type"
+      sequencediagramsettings end
+      overlapping_bars size A4
     end
   end
 
@@ -1506,11 +1524,59 @@ ${docstring}${body}
 "
 	
       end
-    end
 
-    sequencediagram 135170 "DS_génération"
-      sequencediagramsettings end
-      overlapping_bars size A4
+      attribute 134531 "dispo"
+	private explicit_type "bool"
+	init_value "true"
+	cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl "  ${comment}${visibility}${const}${static}${var}${name}${value};
+"
+	python_decl "${comment}${self}${name} = ${value}
+"
+	idl_decl "  ${comment}${visibility}${type} ${name};
+"
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      operation 166403 "setDispo"
+	public explicit_return_type ""
+	nparams 0
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${)}${type}
+{
+  ${body}}
+"
+	python_def "${@}${static}${abstract}def ${name}${(}${)}:
+${docstring}${body}
+"
+	idl_decl "  ${comment}${oneway}${type} ${name}${(}${)}${raisesnl}${raises};
+"
+      end
+
+      operation 166531 "getDispo"
+	public explicit_return_type ""
+	nparams 0
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${)}${type}
+{
+  ${body}}
+"
+	python_def "${@}${static}${abstract}def ${name}${(}${)}:
+${docstring}${body}
+"
+	idl_decl "  ${comment}${oneway}${type} ${name}${(}${)}${raisesnl}${raises};
+"
+      end
     end
 
     class 135298 "IHM"
