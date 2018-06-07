@@ -1,6 +1,6 @@
 format 218
 "Planning" // Analyse::Planning
-  revision 3
+  revision 5
   modified_by 3 "Tristan"
   // class settings
   
@@ -426,7 +426,7 @@ ${members}}
 	    classrelation_ref 137603 // <aggregation>
       end
 
-      operation 134531 "Film"
+      operation 134531 "+ Film"
 	public explicit_return_type ""
 	nparams 0
 	cpp_decl "    ${comment}${inline}${name}${(}${)}${volatile}${throw};
@@ -444,6 +444,158 @@ ${docstring}${body}
 	
       end
 
+      operation 144899 "+ setTitre"
+	public explicit_return_type ""
+	nparams 0
+	
+	
+	php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${)}${type}
+{
+  ${body}}
+"
+	python_def "${@}${static}${abstract}def ${name}${(}${)}:
+${docstring}${body}
+"
+	
+      end
+
+      operation 145027 "+ setRealisateur"
+	public explicit_return_type ""
+	nparams 0
+	
+	
+	php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${)}${type}
+{
+  ${body}}
+"
+	python_def "${@}${static}${abstract}def ${name}${(}${)}:
+${docstring}${body}
+"
+	
+      end
+
+      operation 145155 "+ setDuree"
+	public explicit_return_type ""
+	nparams 0
+	
+	
+	php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${)}${type}
+{
+  ${body}}
+"
+	python_def "${@}${static}${abstract}def ${name}${(}${)}:
+${docstring}${body}
+"
+	
+      end
+
+      operation 145283 "+ setIdFilm"
+	public explicit_return_type ""
+	nparams 0
+	
+	
+	php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${)}${type}
+{
+  ${body}}
+"
+	python_def "${@}${static}${abstract}def ${name}${(}${)}:
+${docstring}${body}
+"
+	
+      end
+
+      operation 145411 "+ setNbProj"
+	public explicit_return_type ""
+	nparams 0
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${)}${type}
+{
+  ${body}}
+"
+	python_def "${@}${static}${abstract}def ${name}${(}${)}:
+${docstring}${body}
+"
+	idl_decl "  ${comment}${oneway}${type} ${name}${(}${)}${raisesnl}${raises};
+"
+      end
+
+      operation 145539 "+ getTitre"
+	public explicit_return_type ""
+	nparams 0
+	
+	
+	php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${)}${type}
+{
+  ${body}}
+"
+	python_def "${@}${static}${abstract}def ${name}${(}${)}:
+${docstring}${body}
+"
+	
+      end
+
+      operation 145667 "+ getRealisateur"
+	public explicit_return_type ""
+	nparams 0
+	
+	
+	php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${)}${type}
+{
+  ${body}}
+"
+	python_def "${@}${static}${abstract}def ${name}${(}${)}:
+${docstring}${body}
+"
+	
+      end
+
+      operation 145795 "+ getDuree"
+	public explicit_return_type ""
+	nparams 0
+	
+	
+	php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${)}${type}
+{
+  ${body}}
+"
+	python_def "${@}${static}${abstract}def ${name}${(}${)}:
+${docstring}${body}
+"
+	
+      end
+
+      operation 145923 "+ getIdFilm"
+	public explicit_return_type ""
+	nparams 0
+	
+	
+	php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${)}${type}
+{
+  ${body}}
+"
+	python_def "${@}${static}${abstract}def ${name}${(}${)}:
+${docstring}${body}
+"
+	
+      end
+
+      operation 146051 "+ getNbProj"
+	public explicit_return_type ""
+	nparams 0
+	
+	
+	php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${)}${type}
+{
+  ${body}}
+"
+	python_def "${@}${static}${abstract}def ${name}${(}${)}:
+${docstring}${body}
+"
+	
+      end
     end
 
     class 134786 "Type"
@@ -496,18 +648,6 @@ ${members}}
 	MysqlColumn
       end
 
-      classrelation 134786 // <aggregation>
-	relation 134658 o---
-	  a role_name "" private
-	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
-"
-	    classrelation_ref 134786 // <aggregation>
-	  b role_name "" private
-	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
-"
-	    classrelation_ref 134914 // <aggregation>
-      end
-
       attribute 136450 "Salles"
 	private explicit_type "Salle"
 	cpp_decl ""
@@ -524,15 +664,23 @@ ${members}}
 	relation_ref 135555 // <aggregation>
       end
 
-      classrelation 137091 // <aggregation>
-	relation_ref 135811 // <aggregation>
+      classrelation 134786 // <aggregation>
+	relation 134658 o---
+	  a role_name "" private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 134786 // <aggregation>
+	  b role_name "" private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 134914 // <aggregation>
       end
 
       classrelation 137603 // <aggregation>
 	relation_ref 136067 // <aggregation>
       end
 
-      operation 134787 "Type"
+      operation 134787 "+ Type"
 	public explicit_return_type ""
 	nparams 0
 	cpp_decl "    ${comment}${inline}${name}${(}${)}${volatile}${throw};
@@ -544,6 +692,126 @@ ${members}}
   ${body}}
 "
 	
+	python_def "${@}${static}${abstract}def ${name}${(}${)}:
+${docstring}${body}
+"
+	
+      end
+
+      operation 143875 "+ setIdType"
+	public explicit_return_type ""
+	nparams 0
+	
+	
+	php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${)}${type}
+{
+  ${body}}
+"
+	python_def "${@}${static}${abstract}def ${name}${(}${)}:
+${docstring}${body}
+"
+	
+      end
+
+      operation 144003 "+ setFilm"
+	public explicit_return_type ""
+	nparams 0
+	
+	
+	php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${)}${type}
+{
+  ${body}}
+"
+	python_def "${@}${static}${abstract}def ${name}${(}${)}:
+${docstring}${body}
+"
+	
+      end
+
+      operation 144131 "+ setJures"
+	public explicit_return_type ""
+	nparams 0
+	
+	
+	php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${)}${type}
+{
+  ${body}}
+"
+	python_def "${@}${static}${abstract}def ${name}${(}${)}:
+${docstring}${body}
+"
+	
+      end
+
+      operation 144259 "+ setSalles"
+	public explicit_return_type ""
+	nparams 0
+	
+	
+	php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${)}${type}
+{
+  ${body}}
+"
+	python_def "${@}${static}${abstract}def ${name}${(}${)}:
+${docstring}${body}
+"
+	
+      end
+
+      operation 144387 "+ getIdType"
+	public explicit_return_type ""
+	nparams 0
+	
+	
+	php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${)}${type}
+{
+  ${body}}
+"
+	python_def "${@}${static}${abstract}def ${name}${(}${)}:
+${docstring}${body}
+"
+	
+      end
+
+      operation 144515 "+ getFilm"
+	public explicit_return_type ""
+	nparams 0
+	
+	
+	php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${)}${type}
+{
+  ${body}}
+"
+	python_def "${@}${static}${abstract}def ${name}${(}${)}:
+${docstring}${body}
+"
+	
+      end
+
+      operation 144643 "+ getJures"
+	public explicit_return_type ""
+	nparams 0
+	
+	
+	php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${)}${type}
+{
+  ${body}}
+"
+	python_def "${@}${static}${abstract}def ${name}${(}${)}:
+${docstring}${body}
+"
+	
+      end
+
+      operation 144771 "+ getSalles"
+	public explicit_return_type ""
+	nparams 0
+	
+	
+	php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${)}${type}
+{
+  ${body}}
+"
 	python_def "${@}${static}${abstract}def ${name}${(}${)}:
 ${docstring}${body}
 "
@@ -635,10 +903,6 @@ ${members}}
 	MysqlColumn
       end
 
-      classrelation 134914 // <aggregation>
-	relation_ref 134658 // <aggregation>
-      end
-
       attribute 137346 "nb_film_vu_jour"
 	private explicit_type "int"
 	cpp_decl ""
@@ -660,23 +924,11 @@ ${members}}
 	  b parent class_ref 136194 // VIP
       end
 
-      classrelation 136963 // <aggregation>
-	relation 135811 o---
-	  a role_name "" private
-	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
-"
-	    python "${comment}${self}${name} = ${value}
-"
-	    classrelation_ref 136963 // <aggregation>
-	  b role_name "" private
-	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
-"
-	    python "${comment}${self}${name} = ${value}
-"
-	    classrelation_ref 137091 // <aggregation>
+      classrelation 134914 // <aggregation>
+	relation_ref 134658 // <aggregation>
       end
 
-      operation 135171 "Jures"
+      operation 135171 "+ Jures"
 	public explicit_return_type ""
 	nparams 0
 	cpp_decl "    ${comment}${inline}${name}${(}${)}${volatile}${throw};
@@ -688,6 +940,216 @@ ${members}}
   ${body}}
 "
 	
+	python_def "${@}${static}${abstract}def ${name}${(}${)}:
+${docstring}${body}
+"
+	
+      end
+
+      operation 146179 "+ setIdJures"
+	public explicit_return_type ""
+	nparams 0
+	
+	
+	php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${)}${type}
+{
+  ${body}}
+"
+	python_def "${@}${static}${abstract}def ${name}${(}${)}:
+${docstring}${body}
+"
+	
+      end
+
+      operation 146307 "+ setNomJures"
+	public explicit_return_type ""
+	nparams 0
+	
+	
+	php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${)}${type}
+{
+  ${body}}
+"
+	python_def "${@}${static}${abstract}def ${name}${(}${)}:
+${docstring}${body}
+"
+	
+      end
+
+      operation 146435 "+ setPrenomJures"
+	public explicit_return_type ""
+	nparams 0
+	
+	
+	php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${)}${type}
+{
+  ${body}}
+"
+	python_def "${@}${static}${abstract}def ${name}${(}${)}:
+${docstring}${body}
+"
+	
+      end
+
+      operation 146563 "+ setMetier"
+	public explicit_return_type ""
+	nparams 0
+	
+	
+	php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${)}${type}
+{
+  ${body}}
+"
+	python_def "${@}${static}${abstract}def ${name}${(}${)}:
+${docstring}${body}
+"
+	
+      end
+
+      operation 146691 "+ setOrigine"
+	public explicit_return_type ""
+	nparams 0
+	
+	
+	php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${)}${type}
+{
+  ${body}}
+"
+	python_def "${@}${static}${abstract}def ${name}${(}${)}:
+${docstring}${body}
+"
+	
+      end
+
+      operation 146819 "+ setPresident"
+	public explicit_return_type ""
+	nparams 0
+	
+	
+	php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${)}${type}
+{
+  ${body}}
+"
+	python_def "${@}${static}${abstract}def ${name}${(}${)}:
+${docstring}${body}
+"
+	
+      end
+
+      operation 146947 "+ setNbFilmVuJour"
+	public explicit_return_type ""
+	nparams 0
+	
+	
+	php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${)}${type}
+{
+  ${body}}
+"
+	python_def "${@}${static}${abstract}def ${name}${(}${)}:
+${docstring}${body}
+"
+	
+      end
+
+      operation 147075 "+ getIdJures"
+	public explicit_return_type ""
+	nparams 0
+	
+	
+	php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${)}${type}
+{
+  ${body}}
+"
+	python_def "${@}${static}${abstract}def ${name}${(}${)}:
+${docstring}${body}
+"
+	
+      end
+
+      operation 147203 "+ getNomJures"
+	public explicit_return_type ""
+	nparams 0
+	
+	
+	php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${)}${type}
+{
+  ${body}}
+"
+	python_def "${@}${static}${abstract}def ${name}${(}${)}:
+${docstring}${body}
+"
+	
+      end
+
+      operation 147331 "+ getPrenomJures"
+	public explicit_return_type ""
+	nparams 0
+	
+	
+	php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${)}${type}
+{
+  ${body}}
+"
+	python_def "${@}${static}${abstract}def ${name}${(}${)}:
+${docstring}${body}
+"
+	
+      end
+
+      operation 147459 "+ getMetier"
+	public explicit_return_type ""
+	nparams 0
+	
+	
+	php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${)}${type}
+{
+  ${body}}
+"
+	python_def "${@}${static}${abstract}def ${name}${(}${)}:
+${docstring}${body}
+"
+	
+      end
+
+      operation 147587 "+ getOrigine"
+	public explicit_return_type ""
+	nparams 0
+	
+	
+	php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${)}${type}
+{
+  ${body}}
+"
+	python_def "${@}${static}${abstract}def ${name}${(}${)}:
+${docstring}${body}
+"
+	
+      end
+
+      operation 147715 "+ getPresident"
+	public explicit_return_type ""
+	nparams 0
+	
+	
+	php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${)}${type}
+{
+  ${body}}
+"
+	python_def "${@}${static}${abstract}def ${name}${(}${)}:
+${docstring}${body}
+"
+	
+      end
+
+      operation 147843 "+ getNbFilmVuJour"
+	public explicit_return_type ""
+	nparams 0
+	
+	
+	php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${)}${type}
+{
+  ${body}}
+"
 	python_def "${@}${static}${abstract}def ${name}${(}${)}:
 ${docstring}${body}
 "
@@ -776,7 +1238,7 @@ ${members}}
 	    classrelation_ref 136579 // <aggregation>
       end
 
-      operation 135043 "Salle"
+      operation 135043 "+ Salle"
 	public explicit_return_type ""
 	nparams 0
 	cpp_decl "    ${comment}${inline}${name}${(}${)}${volatile}${throw};
@@ -788,6 +1250,126 @@ ${members}}
   ${body}}
 "
 	
+	python_def "${@}${static}${abstract}def ${name}${(}${)}:
+${docstring}${body}
+"
+	
+      end
+
+      operation 142851 "+ setIdSalle"
+	public explicit_return_type ""
+	nparams 0
+	
+	
+	php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${)}${type}
+{
+  ${body}}
+"
+	python_def "${@}${static}${abstract}def ${name}${(}${)}:
+${docstring}${body}
+"
+	
+      end
+
+      operation 142979 "+ setNomSalle"
+	public explicit_return_type ""
+	nparams 0
+	
+	
+	php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${)}${type}
+{
+  ${body}}
+"
+	python_def "${@}${static}${abstract}def ${name}${(}${)}:
+${docstring}${body}
+"
+	
+      end
+
+      operation 143107 "+ setNbPlaces"
+	public explicit_return_type ""
+	nparams 0
+	
+	
+	php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${)}${type}
+{
+  ${body}}
+"
+	python_def "${@}${static}${abstract}def ${name}${(}${)}:
+${docstring}${body}
+"
+	
+      end
+
+      operation 143235 "+ setCreneaux"
+	public explicit_return_type ""
+	nparams 0
+	
+	
+	php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${)}${type}
+{
+  ${body}}
+"
+	python_def "${@}${static}${abstract}def ${name}${(}${)}:
+${docstring}${body}
+"
+	
+      end
+
+      operation 143363 "+ getIdSalle"
+	public explicit_return_type ""
+	nparams 0
+	
+	
+	php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${)}${type}
+{
+  ${body}}
+"
+	python_def "${@}${static}${abstract}def ${name}${(}${)}:
+${docstring}${body}
+"
+	
+      end
+
+      operation 143491 "+ getNomSalle"
+	public explicit_return_type ""
+	nparams 0
+	
+	
+	php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${)}${type}
+{
+  ${body}}
+"
+	python_def "${@}${static}${abstract}def ${name}${(}${)}:
+${docstring}${body}
+"
+	
+      end
+
+      operation 143619 "+ getNbPlaces"
+	public explicit_return_type ""
+	nparams 0
+	
+	
+	php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${)}${type}
+{
+  ${body}}
+"
+	python_def "${@}${static}${abstract}def ${name}${(}${)}:
+${docstring}${body}
+"
+	
+      end
+
+      operation 143747 "+ getCreneaux"
+	public explicit_return_type ""
+	nparams 0
+	
+	
+	php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${)}${type}
+{
+  ${body}}
+"
 	python_def "${@}${static}${abstract}def ${name}${(}${)}:
 ${docstring}${body}
 "
@@ -847,7 +1429,7 @@ ${members}}
 	    classrelation_ref 136323 // <aggregation>
       end
 
-      operation 134915 "Creneaux"
+      operation 134915 "+ Creneaux"
 	public explicit_return_type ""
 	nparams 0
 	cpp_decl "    ${comment}${inline}${name}${(}${)}${volatile}${throw};
@@ -859,6 +1441,66 @@ ${members}}
   ${body}}
 "
 	
+	python_def "${@}${static}${abstract}def ${name}${(}${)}:
+${docstring}${body}
+"
+	
+      end
+
+      operation 142339 "+ setIdCreneaux"
+	public explicit_return_type ""
+	nparams 0
+	
+	
+	php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${)}${type}
+{
+  ${body}}
+"
+	python_def "${@}${static}${abstract}def ${name}${(}${)}:
+${docstring}${body}
+"
+	
+      end
+
+      operation 142467 "+ setDate"
+	public explicit_return_type ""
+	nparams 0
+	
+	
+	php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${)}${type}
+{
+  ${body}}
+"
+	python_def "${@}${static}${abstract}def ${name}${(}${)}:
+${docstring}${body}
+"
+	
+      end
+
+      operation 142595 "+ getIdCreneaux"
+	public explicit_return_type ""
+	nparams 0
+	
+	
+	php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${)}${type}
+{
+  ${body}}
+"
+	python_def "${@}${static}${abstract}def ${name}${(}${)}:
+${docstring}${body}
+"
+	
+      end
+
+      operation 142723 "+ getIdCreneaux"
+	public explicit_return_type ""
+	nparams 0
+	
+	
+	php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${)}${type}
+{
+  ${body}}
+"
 	python_def "${@}${static}${abstract}def ${name}${(}${)}:
 ${docstring}${body}
 "

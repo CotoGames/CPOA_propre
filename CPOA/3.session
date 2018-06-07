@@ -3,18 +3,26 @@ window_sizes 1366 705 320 1041 552 104
 diagrams
   classdiagram_ref 135554 // DC_hebergement
     1041 552 100 A4 238 0
-  active  classdiagram_ref 135042 // DC_Planning
+  classdiagram_ref 135042 // DC_Planning
     1041 552 100 A4 192 0
   usecasediagram_ref 135426 // DCU_hebergement
     114 98 100 A4 192 0
   sequencediagram_ref 135682 // DS_affectation_resa
     114 98 100 A4 0 0
+  active  classdiagram_ref 128131 // CDC_Planning
+    1041 552 80 A4 286 0
+  classdiagram_ref 128003 // CDC_heberegement
+    832 441 100 A4 0 0
 end
 show_stereotypes
-selected classdiagram_ref 135042 // DC_Planning
+selected operation_ref 147843 // + getNbFilmVuJour
 open
   class_ref 136194 // VIP
-  classview_ref 134658 // DC_Planning
+  class_ref 134658 // Film
+  classrelation_ref 134786 // <aggregation>
+  classrelation_ref 134914 // <aggregation>
+  class_ref 135042 // Salle
+  class_ref 135170 // Creneaux
   classview_ref 128003 // DC_hebergement
 end
 end
