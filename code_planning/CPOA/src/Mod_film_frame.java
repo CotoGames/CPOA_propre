@@ -1,6 +1,10 @@
 
 import java.awt.Point;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import static javax.swing.JOptionPane.INFORMATION_MESSAGE;
+import static javax.swing.JOptionPane.OK_CANCEL_OPTION;
+import static javax.swing.JOptionPane.WARNING_MESSAGE;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -123,7 +127,14 @@ public class Mod_film_frame extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2MouseClicked
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
-        // TODO add your handling code here:
+        int nbSelect = jTable1.getSelectedRowCount();
+        if (nbSelect == 0){
+             JOptionPane.showMessageDialog(rootPane,"Il faut selectionner des films", "Il faut selectionner des films",INFORMATION_MESSAGE);
+        } else {
+            int name;
+            name = JOptionPane.showConfirmDialog(rootPane,"Voulez vous modifier les information de ces films ?", "Êtes-vous sûr ?",OK_CANCEL_OPTION,WARNING_MESSAGE);
+            //Add code to delete film with controller
+        }
     }//GEN-LAST:event_jButton1MouseClicked
 
     /**
