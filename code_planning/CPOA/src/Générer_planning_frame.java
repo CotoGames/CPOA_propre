@@ -2,6 +2,8 @@
 import java.awt.Point;
 import java.awt.event.ItemEvent;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import static javax.swing.JOptionPane.WARNING_MESSAGE;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -72,6 +74,11 @@ public class Générer_planning_frame extends javax.swing.JFrame {
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jButton1.setText("Valider");
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
 
         jButton2.setText("Retour");
         jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -152,6 +159,18 @@ public class Générer_planning_frame extends javax.swing.JFrame {
             jComboBox2.setVisible(false);
         }
     }//GEN-LAST:event_jRadioButton2ItemStateChanged
+
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+        if(jRadioButton1.isSelected()==false&&jRadioButton2.isSelected()==false){
+            JOptionPane.showMessageDialog(rootPane,"Merci de selectionner un type ou une salle","Vérifier vos données entréesv",WARNING_MESSAGE);
+        }else{
+            this.setVisible(false);
+            Point x = this.getLocation();
+            JFrame afficher = new Afficher_planning_frame();
+            afficher.setLocation(x);
+            afficher.setVisible(true);  
+        }
+    }//GEN-LAST:event_jButton1MouseClicked
      
     /**
      * @param args the command line arguments
