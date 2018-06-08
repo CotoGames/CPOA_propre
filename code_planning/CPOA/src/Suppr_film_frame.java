@@ -5,6 +5,7 @@ import javax.swing.JOptionPane;
 import static javax.swing.JOptionPane.INFORMATION_MESSAGE;
 import static javax.swing.JOptionPane.OK_CANCEL_OPTION;
 import static javax.swing.JOptionPane.WARNING_MESSAGE;
+import static javax.swing.JOptionPane.YES_OPTION;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -135,9 +136,24 @@ public class Suppr_film_frame extends javax.swing.JFrame {
        if (nbSelect == 0){
             JOptionPane.showMessageDialog(rootPane,"Il faut selectionner des films", "Il faut selectionner des films",INFORMATION_MESSAGE);
        } else {
+           String msg = "Voulez vous supprimer ce";
+           if (nbSelect > 1)
+               msg+="s films ?";
+           else
+               msg+=" film ?";
            int name;
-           name = JOptionPane.showConfirmDialog(rootPane,"Voulez vous supprimer ces films ?", "Êtes-vous sûr ?",OK_CANCEL_OPTION,WARNING_MESSAGE);
-           //Add code to delete film with controller
+           name = JOptionPane.showConfirmDialog(rootPane,msg, "Êtes-vous sûr ?",OK_CANCEL_OPTION,WARNING_MESSAGE);
+           
+           if (name == YES_OPTION){
+               
+               //Add code to delete film with controller
+               
+                this.setVisible(false);
+                Point x = this.getLocation();
+                JFrame planning = new Afficher_planning_frame();
+                planning.setLocation(x);
+                planning.setVisible(true);
+            }
        }
     }//GEN-LAST:event_jButton1MouseClicked
 

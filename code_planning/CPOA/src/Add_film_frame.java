@@ -4,6 +4,7 @@ import java.awt.Point;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import static javax.swing.JOptionPane.WARNING_MESSAGE;
+import static javax.swing.JOptionPane.YES_OPTION;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -227,8 +228,15 @@ public class Add_film_frame extends javax.swing.JFrame {
         {
             String recap = "Voulez-vous ajouter ";
             recap += "\'" + jTextField1.getText() + "\' de " + jTextField2.getText() + " \nDurée: " + jFormattedTextField1.getText() + " min ?";
-            JOptionPane.showConfirmDialog(rootPane, recap);
+            int reponse = JOptionPane.showConfirmDialog(rootPane, recap);
             //ajouter code BD
+            if (reponse == YES_OPTION){
+                this.setVisible(false);
+                Point x = this.getLocation();
+                JFrame planning = new Afficher_planning_frame();
+                planning.setLocation(x);
+                planning.setVisible(true);
+            }
         }
     }//GEN-LAST:event_jButton1MouseClicked
 
