@@ -138,9 +138,9 @@ public class Suppr_film_frame extends javax.swing.JFrame {
        } else {
            String msg = "Voulez vous supprimer ce";
            if (nbSelect > 1)
-               msg+="s films ?";
+               msg+="s films du planning ?";
            else
-               msg+=" film ?";
+               msg+=" film du planning ?";
            int name;
            name = JOptionPane.showConfirmDialog(rootPane,msg, "Êtes-vous sûr ?",OK_CANCEL_OPTION,WARNING_MESSAGE);
            
