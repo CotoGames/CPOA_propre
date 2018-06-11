@@ -69,9 +69,9 @@ public class Générer_planning_frame extends javax.swing.JFrame {
             }
         });
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Long Métrage", "Hors Concours", "Un Certain Regard", "Court Métrage" }));
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Grand Théâtre Lumière", "Salle Debussy", "Salle Buñuel", "Salle du Soixantième", "Salle Bazin" }));
 
         jButton1.setText("Valider");
         jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -95,7 +95,6 @@ public class Générer_planning_frame extends javax.swing.JFrame {
                 .addGap(34, 34, 34)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(27, 27, 27)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -105,13 +104,16 @@ public class Générer_planning_frame extends javax.swing.JFrame {
                                 .addComponent(jRadioButton1)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jRadioButton2)))
-                        .addGap(31, 31, 31))
+                        .addGap(57, 57, 57))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(154, 154, 154)
-                        .addComponent(jButton1))
-                    .addComponent(jButton2)
-                    .addComponent(jLabel1))
-                .addGap(35, 35, 35))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton2)
+                            .addComponent(jLabel1))
+                        .addGap(35, 35, 35))))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(205, 205, 205)
+                .addComponent(jButton1)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -126,9 +128,9 @@ public class Générer_planning_frame extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
                 .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(9, 9, 9)
                 .addComponent(jButton2)
                 .addGap(50, 50, 50))
         );
@@ -161,14 +163,39 @@ public class Générer_planning_frame extends javax.swing.JFrame {
     }//GEN-LAST:event_jRadioButton2ItemStateChanged
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+        int idSelected = -1;
+        boolean typeORsalle = false;
+        
+        //si rien n'a été sélectionné
         if(jRadioButton1.isSelected()==false&&jRadioButton2.isSelected()==false){
             JOptionPane.showMessageDialog(rootPane,"Merci de selectionner un type ou une salle","Vérifier vos données entréesv",WARNING_MESSAGE);
-        }else{
+        }
+        //si on a choisi un type de film
+        if (jRadioButton1.isSelected()==true){
+            idSelected = jComboBox1.getSelectedIndex();
+            typeORsalle = false;
+        }
+        //si on a choisi une salle
+        if (jRadioButton2.isSelected()==true) {
+            idSelected = jComboBox2.getSelectedIndex();
+            typeORsalle = true;
+        }
+        //si l'id sélectionné a bien
+        //été modifiée, on sort de la fenêtre
+        if (idSelected != -1){
+            
+            if (typeORsalle == false){
+                //génération par type de film
+            }
+            else {
+                //génération par salle
+            }
+            
             this.setVisible(false);
             Point x = this.getLocation();
             JFrame afficher = new Générer_planning_confirm();
             afficher.setLocation(x);
-            afficher.setVisible(true);  
+            afficher.setVisible(true);
         }
     }//GEN-LAST:event_jButton1MouseClicked
      
