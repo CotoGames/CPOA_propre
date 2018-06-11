@@ -169,7 +169,7 @@ public class Mod_film_frame extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Suppr_film_frame().setVisible(true);
+                new Mod_film_frame().setVisible(true);
             }
         });
     }

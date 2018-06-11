@@ -126,8 +126,6 @@ public class Générer_planning_confirm extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
-        
-        
         //ajouter les créneaux pris dans la BD
         
         this.setVisible(false);
