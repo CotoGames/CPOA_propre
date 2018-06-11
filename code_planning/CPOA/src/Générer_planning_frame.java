@@ -166,7 +166,7 @@ public class Générer_planning_frame extends javax.swing.JFrame {
         }else{
             this.setVisible(false);
             Point x = this.getLocation();
-            JFrame afficher = new Afficher_planning_frame();
+            JFrame afficher = new Générer_planning_confirm();
             afficher.setLocation(x);
             afficher.setVisible(true);  
         }

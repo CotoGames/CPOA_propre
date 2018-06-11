@@ -131,9 +131,11 @@ public class Mod_film_frame extends javax.swing.JFrame {
         if (nbSelect == 0){
              JOptionPane.showMessageDialog(rootPane,"Il faut selectionner des films", "Il faut selectionner des films",INFORMATION_MESSAGE);
         } else {
-            int name;
-            name = JOptionPane.showConfirmDialog(rootPane,"Voulez vous modifier les information de ces films ?", "Êtes-vous sûr ?",OK_CANCEL_OPTION,WARNING_MESSAGE);
-            //Add code to delete film with controller
+            this.setVisible(false);
+            Point x = this.getLocation();
+            JFrame modfilm = new Mod_film_conf();
+            modfilm.setLocation(x);
+            modfilm.setVisible(true);
         }
     }//GEN-LAST:event_jButton1MouseClicked
 
