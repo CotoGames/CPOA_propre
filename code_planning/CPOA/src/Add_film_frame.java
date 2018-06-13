@@ -257,6 +257,7 @@ public class Add_film_frame extends javax.swing.JFrame {
             }
         }
         
+        
         int idmax = -1;
         String req1 = "SELECT MAX(\"idFilm\") FROM \"Film\" ";
         ResultSet res = BD_co.main(req1);

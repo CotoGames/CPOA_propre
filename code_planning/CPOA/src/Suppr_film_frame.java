@@ -31,19 +31,30 @@ public class Suppr_film_frame extends javax.swing.JFrame {
         initComponents();
         this.setResizable(false);
         
+        String txt = "";
         int nbFilm = 0;
         String req1 = "COUNT(*) FROM \"Film\"";
-        ResultSet res = BD_co.main(req1);
+        ResultSet res1 = BD_co.main(req1);
         try {
-            if (res.next()) {
-                nbFilm = res.getInt(1);
+            if (res1.next()) {
+                nbFilm = res1.getInt(1);
             }
         } catch (SQLException ex) {
             Logger.getLogger(Add_film_frame.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        for (int i=0; i++; i<nbFilm){
+        for (int i=0; i<nbFilm; i++){
             
+            String req2 = "SELECT \"nomFilm\" FROM \"Film\" WHERE \"idFilm\"="+Integer.toString(i);
+            ResultSet res2 = BD_co.main(req2);
+            try {
+                txt = res2.getString(1);
+            } catch (SQLException ex) {
+                Logger.getLogger(Suppr_film_frame.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+            
+            //jTable1.add(, i);
         }
         
     }

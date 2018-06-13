@@ -1,9 +1,14 @@
 
+import Controller.BD_co;
 import java.awt.Point;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Properties;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 
 /*
@@ -26,14 +31,74 @@ public class Afficher_planning_frame extends javax.swing.JFrame {
         initComponents();
         this.setResizable(false);
         
-        String test = "A Lui 256 LM 05/36/18 GTL B Lautre 125 CM 36/8/16 PTL";
-        
         //met à jour la table lorsqu'on choisit une salle
         jComboBox1.addItemListener(new ItemListener() {
             public void itemStateChanged(ItemEvent e) {
                 
-                System.out.println("Coucou");
-                System.out.println(test.substring(test.indexOf(" "), test.length()));
+                String req1;
+                ResultSet res1;
+                String req2;
+                ResultSet res2;
+                String ephem = "";
+                String txt = "";
+                
+                
+                String salle = (String) jComboBox1.getSelectedItem();
+                
+                int nbCren = 0;
+                req1 = "COUNT(*) FROM \"Creneaux\" WHERE \"dispo\"=1";
+                res1 = BD_co.main(req1);
+                try {
+                    nbCren = res1.getInt(1);
+                } catch (SQLException ex) {
+                    Logger.getLogger(Afficher_planning_frame.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                
+                for (int i=0; i<nbCren; i++){
+                    
+                    //ajoute le nom du film au résultat
+                    req2 = "SELECT \"nomFilm\" FROM \"Film\" f, \"Creneaux\" c "
+                            + "WHERE c.\"idSalle\""+jComboBox1.getSelectedItem()
+                            + "AND "
+                            +"c.\"idCreneaux\"="+Integer.toString(i)+
+                            " AND ";
+                    res2 = BD_co.main(req2);
+                    try {
+                        ephem = res2.getString(2);
+                    } catch (SQLException ex) {
+                        Logger.getLogger(Afficher_planning_frame.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    txt+=ephem+" ";
+                    
+                    //Ajoute le réalisateur au résultat
+                    req2 = "SELECT \"Realisateur\" FROM \"Film\" f, \"Creneaux\" c "
+                            + "WHERE c.\"idCreneaux\"="+Integer.toString(i)+
+                            " AND ";
+                    res2 = BD_co.main(req2);
+                    try {
+                        ephem = res2.getString(2);
+                    } catch (SQLException ex) {
+                        Logger.getLogger(Afficher_planning_frame.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    txt+=ephem+" ";
+                    
+                    //Ajoute la durée au résultat
+                    req2 = "SELECT \"Duree\" FROM \"Film\" f, \"Creneaux\" c "
+                            + "WHERE c.\"idCreneaux\"="+Integer.toString(i)+
+                            " AND ";
+                    res2 = BD_co.main(req2);
+                    try {
+                        ephem = res2.getString(2);
+                    } catch (SQLException ex) {
+                        Logger.getLogger(Afficher_planning_frame.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    txt+=ephem;
+                    
+                    req2 = "SELECT \"Type\" FROM \"Type\" t, \"Film\" f, \Creneaux"
+                    
+                }
+                
+                
             }
         });
     }
