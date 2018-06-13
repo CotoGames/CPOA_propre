@@ -128,8 +128,8 @@ public class Mod_film_frame extends javax.swing.JFrame {
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
         int nbSelect = jTable1.getSelectedRowCount();
-        if (nbSelect == 0){
-             JOptionPane.showMessageDialog(rootPane,"Il faut selectionner des films", "Il faut selectionner des films",INFORMATION_MESSAGE);
+        if (nbSelect == 0 || nbSelect>1){
+             JOptionPane.showMessageDialog(rootPane,"Il faut selectionner un film", "Il faut selectionner des films",INFORMATION_MESSAGE);
         } else {
             this.setVisible(false);
             Point x = this.getLocation();

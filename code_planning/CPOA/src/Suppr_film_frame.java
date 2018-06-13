@@ -1,5 +1,10 @@
 
+import Controller.BD_co;
 import java.awt.Point;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import static javax.swing.JOptionPane.INFORMATION_MESSAGE;
@@ -25,6 +30,22 @@ public class Suppr_film_frame extends javax.swing.JFrame {
     public Suppr_film_frame() {
         initComponents();
         this.setResizable(false);
+        
+        int nbFilm = 0;
+        String req1 = "COUNT(*) FROM \"Film\"";
+        ResultSet res = BD_co.main(req1);
+        try {
+            if (res.next()) {
+                nbFilm = res.getInt(1);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Add_film_frame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        for (int i=0; i++; i<nbFilm){
+            
+        }
+        
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -49,17 +70,17 @@ public class Suppr_film_frame extends javax.swing.JFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "Nom Film", "Réalisateur", "Durée", "Type", "Créneau", "Salle"
+                "Nom Film", "Réalisateur", "Durée", "Type"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.Object.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class
             };
 
             public Class getColumnClass(int columnIndex) {

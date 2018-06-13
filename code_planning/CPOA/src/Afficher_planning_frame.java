@@ -1,5 +1,9 @@
 
 import java.awt.Point;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
+import java.sql.Connection;
+import java.util.Properties;
 import javax.swing.JFrame;
 
 /*
@@ -17,9 +21,21 @@ public class Afficher_planning_frame extends javax.swing.JFrame {
     /**
      * Creates new form Suppr_film_frame
      */
+    @SuppressWarnings("Convert2Lambda")
     public Afficher_planning_frame() {
         initComponents();
         this.setResizable(false);
+        
+        String test = "A Lui 256 LM 05/36/18 GTL B Lautre 125 CM 36/8/16 PTL";
+        
+        //met à jour la table lorsqu'on choisit une salle
+        jComboBox1.addItemListener(new ItemListener() {
+            public void itemStateChanged(ItemEvent e) {
+                
+                System.out.println("Coucou");
+                System.out.println(test.substring(test.indexOf(" "), test.length()));
+            }
+        });
     }
 
     /**
@@ -131,6 +147,12 @@ public class Afficher_planning_frame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
+  
+    
+    
+    
+    
+    
     /**
      * @param args the command line arguments
      */

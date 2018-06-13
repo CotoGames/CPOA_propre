@@ -18,7 +18,7 @@ public static final String user = "p1623107";
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public static ResultSet main(String requete) {
         // TODO code application logic here
         try
         {
@@ -34,25 +34,18 @@ public static final String user = "p1623107";
             Connection connection = DriverManager.getConnection(url,user,passwd); 
             //Création de l'objet gérant les requêtes 
             Statement statement = connection.createStatement();
-            /*récupération du résultat d'une requête
-            ResultSet result  = statement.executeQuery("select * from plongeur");
-            //tant qu'il y a une ligne résultat
-            while(result.next())
-            {
-                System.out.println(result.getInt(1));
-                System.out.println(result.getString("nomplongeur"));
-                System.out.println(result.getString("prenomplongeur"));
-                
-            }
-            //fermeture de la connexion à la BD
-            statement.close();
-            connection.close();*/
+            //récupération du résultat d'une requête
+            ResultSet result  = statement.executeQuery(requete);
+            return result;
+            
         }
+        
         catch (Exception e)
         {
             System.out.println(e);
         }
         
+        return null;
     }
     
 }
