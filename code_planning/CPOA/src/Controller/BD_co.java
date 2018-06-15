@@ -13,7 +13,7 @@ import java.util.Scanner;
  * @author myria
  */
 public class BD_co {
-public static final String passwd = "288357";
+public static final String passwd = "******";
 public static final String user = "p1623107"; 
     /**
      * @param args the command line arguments
