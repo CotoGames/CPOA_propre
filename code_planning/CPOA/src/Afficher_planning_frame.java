@@ -94,7 +94,7 @@ public class Afficher_planning_frame extends javax.swing.JFrame {
                     }
                     txt+=ephem;
                     
-                    req2 = "SELECT \"Type\" FROM \"Type\" t, \"Film\" f, \Creneaux"
+                    //req2 = "SELECT \"Type\" FROM \"Type\" t, \"Film\" f, \Creneaux"
                     
                 }
                 
