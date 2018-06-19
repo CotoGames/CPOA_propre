@@ -24,7 +24,7 @@ public class C_Mod_Film{
     public SalleDAO salleDAO = new SalleDAO();
     public TypeDAO typeDAO = new TypeDAO();
     
-    DateFormat df = new SimpleDateFormat("YYYY/MM/DD HH:mm");
+    DateFormat df = new SimpleDateFormat("YYYY/MM/dd HH:mm");
     
     
     public ArrayList<Integer> listeCreneauxPris() throws SQLException{
