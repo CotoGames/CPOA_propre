@@ -28,7 +28,7 @@ public class JuresDAO {
     }
     
     public boolean getPresident(int idJures) throws SQLException{
-        String req = "Select \"president\" FROM \"Jures\" WHERE \"idJures\"="+idJures;
+        String req = "Select \"president\" FROM \"Jures\" WHERE \"idjures\"="+idJures;
         ResultSet res1 = BD_co.main(req);
         int president =res1.getInt(1);
         if (president==0){
@@ -36,5 +36,17 @@ public class JuresDAO {
         }else{
             return true;
         }
+    }
+    
+    public int getNbproj(int idJures) throws SQLException{
+        String req = "Select \"nb_proj_jour\" FROM \"Jures\" WHERE \"idjures\"="+idJures;
+        ResultSet res1 = BD_co.main(req);
+        return res1.getInt(1);
+    }
+    
+    public int getType (int idJures) throws SQLException{
+        String req = "Select idtype FROM \"Jures\" WHERE \"idjures\"="+idJures;
+        ResultSet res1 = BD_co.main(req);
+        return res1.getInt(1);
     }
 }

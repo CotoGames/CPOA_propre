@@ -41,15 +41,15 @@ public class FilmDAO {
         return nbProj;
     }
     
-    public boolean addProj(int idFilm) throws SQLException{
-        int nbproj = getnbProj(idFilm);
-        if (nbproj >= 3){
-            return false;
-        }else{
-            nbproj ++;
+    public boolean addProj(int nbproj) throws SQLException{
             String req = "INSERT INTO \"Film\"(\"nombre_proj\") VALUES ("+nbproj+")";
             BD_co.main(req);   
             return true;
-        }
+    }
+
+    public int getType(int idFilm) throws SQLException{
+        String req = "Select IDTYPE FROM \"Film\" WHERE \"idFilm\"="+idFilm;
+        ResultSet res1 = BD_co.main(req);
+        return res1.getInt(1);
     }
 }
