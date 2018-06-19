@@ -1,15 +1,19 @@
 
 import Controller.BD_co;
+import Modeles.C_Afficher_Planning;
+import Modeles.C_Mod_Film;
 import java.awt.Point;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
+import javax.swing.table.DefaultTableModel;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -23,84 +27,26 @@ import javax.swing.JFrame;
  */
 public class Afficher_planning_frame extends javax.swing.JFrame {
 
+    public C_Afficher_Planning controller = new C_Afficher_Planning();
     /**
      * Creates new form Suppr_film_frame
      */
-    @SuppressWarnings("Convert2Lambda")
-    public Afficher_planning_frame() {
+    public Afficher_planning_frame() throws SQLException {
         initComponents();
         this.setResizable(false);
         
-        //met à jour la table lorsqu'on choisit une salle
-        jComboBox1.addItemListener(new ItemListener() {
-            public void itemStateChanged(ItemEvent e) {
-                
-                String req1;
-                ResultSet res1;
-                String req2;
-                ResultSet res2;
-                String ephem = "";
-                String txt = "";
-                
-                
-                String salle = (String) jComboBox1.getSelectedItem();
-                
-                int nbCren = 0;
-                req1 = "COUNT(*) FROM \"Creneaux\" WHERE \"dispo\"=1";
-                res1 = BD_co.main(req1);
-                try {
-                    nbCren = res1.getInt(1);
-                } catch (SQLException ex) {
-                    Logger.getLogger(Afficher_planning_frame.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                
-                for (int i=0; i<nbCren; i++){
-                    
-                    //ajoute le nom du film au résultat
-                    req2 = "SELECT \"nomFilm\" FROM \"Film\" f, \"Creneaux\" c "
-                            + "WHERE c.\"idSalle\""+jComboBox1.getSelectedItem()
-                            + "AND "
-                            +"c.\"idCreneaux\"="+Integer.toString(i)+
-                            " AND ";
-                    res2 = BD_co.main(req2);
-                    try {
-                        ephem = res2.getString(2);
-                    } catch (SQLException ex) {
-                        Logger.getLogger(Afficher_planning_frame.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                    txt+=ephem+" ";
-                    
-                    //Ajoute le réalisateur au résultat
-                    req2 = "SELECT \"Realisateur\" FROM \"Film\" f, \"Creneaux\" c "
-                            + "WHERE c.\"idCreneaux\"="+Integer.toString(i)+
-                            " AND ";
-                    res2 = BD_co.main(req2);
-                    try {
-                        ephem = res2.getString(2);
-                    } catch (SQLException ex) {
-                        Logger.getLogger(Afficher_planning_frame.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                    txt+=ephem+" ";
-                    
-                    //Ajoute la durée au résultat
-                    req2 = "SELECT \"Duree\" FROM \"Film\" f, \"Creneaux\" c "
-                            + "WHERE c.\"idCreneaux\"="+Integer.toString(i)+
-                            " AND ";
-                    res2 = BD_co.main(req2);
-                    try {
-                        ephem = res2.getString(2);
-                    } catch (SQLException ex) {
-                        Logger.getLogger(Afficher_planning_frame.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                    txt+=ephem;
-                    
-                    //req2 = "SELECT \"Type\" FROM \"Type\" t, \"Film\" f, \Creneaux"
-                    
-                }
-                
-                
-            }
-        });
+        
+        ArrayList<Integer> lesCreneaux = new ArrayList<Integer>();
+        
+        int idSalle;
+        lesCreneaux = controller.listeCreneauxSalle(jComboBox1.getSelectedIndex());
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        
+        for (int i=0; i<lesCreneaux.size()-1; i++){
+            ArrayList<String> ligne = controller.RemplTableau(lesCreneaux.get(i));
+            Object[] data = {ligne.get(0), ligne.get(1), ligne.get(2), ligne.get(3), ligne.get(4), ligne.get(5)} ;
+            model.addRow(data);
+        }
     }
 
     /**
@@ -156,6 +102,11 @@ public class Afficher_planning_frame extends javax.swing.JFrame {
         jLabel2.setText("Salle :");
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Grand Théâtre Lumière", "Salle Debussy", "Salle Buñuel", "Salle du Soixantième", "Salle Bazin" }));
+        jComboBox1.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jComboBox1ItemStateChanged(evt);
+            }
+        });
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox1ActionPerformed(evt);
@@ -211,6 +162,29 @@ public class Afficher_planning_frame extends javax.swing.JFrame {
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox1ActionPerformed
+
+    private void jComboBox1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox1ItemStateChanged
+        ArrayList<Integer> lesCreneaux = new ArrayList<Integer>();
+        
+        int idSalle;
+        try {
+            lesCreneaux = controller.listeCreneauxSalle(jComboBox1.getSelectedIndex());
+        } catch (SQLException ex) {
+            Logger.getLogger(Afficher_planning_frame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        
+        for (int i=0; i<lesCreneaux.size()-1; i++){
+            ArrayList<String> ligne = null;
+            try {
+                ligne = controller.RemplTableau(lesCreneaux.get(i));
+            } catch (SQLException ex) {
+                Logger.getLogger(Afficher_planning_frame.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            Object[] data = {ligne.get(0), ligne.get(1), ligne.get(2), ligne.get(3), ligne.get(4), ligne.get(5)} ;
+            model.addRow(data);
+        }
+    }//GEN-LAST:event_jComboBox1ItemStateChanged
 
   
     

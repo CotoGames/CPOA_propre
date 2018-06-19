@@ -1,5 +1,8 @@
 
 import java.awt.Point;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import static javax.swing.JOptionPane.INFORMATION_MESSAGE;
@@ -144,7 +147,12 @@ public class Mod_film_conf extends javax.swing.JFrame {
                
                 this.setVisible(false);
                 Point x = this.getLocation();
-                JFrame planning = new Afficher_planning_frame();
+                JFrame planning = null;
+               try {
+                   planning = new Afficher_planning_frame();
+               } catch (SQLException ex) {
+                   Logger.getLogger(Mod_film_conf.class.getName()).log(Level.SEVERE, null, ex);
+               }
                 planning.setLocation(x);
                 planning.setVisible(true);
             }

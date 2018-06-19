@@ -8,6 +8,8 @@ package Controller;
 import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
@@ -93,6 +95,19 @@ public class CreneauxDAO {
     
     public ArrayList<Integer> getIDpris() throws SQLException{
         String req = "SELECT \"idCreneaux\" FROM \"Creneaux\" WHERE \"dispo\" = 1";
+        ResultSet res1 = BD_co.main(req);
+        ArrayList<Integer> res = new ArrayList<Integer>();
+        if(res1!=null){
+            while (res1.next()){
+                res.add(res1.getInt(1));
+            }
+        }
+        res.add(1);
+        return res;
+    }
+    
+    public ArrayList<Integer> getIDprisSalle(int idSalle) throws SQLException{
+        String req = "SELECT \"idCreneaux\" FROM \"Creneaux\" WHERE \"dispo\" = 1 AND \"idSalle\"="+idSalle;
         ResultSet res1 = BD_co.main(req);
         ArrayList<Integer> res = new ArrayList<Integer>();
         if(res1!=null){

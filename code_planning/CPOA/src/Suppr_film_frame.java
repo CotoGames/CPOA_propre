@@ -182,7 +182,12 @@ public class Suppr_film_frame extends javax.swing.JFrame {
                
                 this.setVisible(false);
                 Point x = this.getLocation();
-                JFrame planning = new Afficher_planning_frame();
+                JFrame planning = null;
+               try {
+                   planning = new Afficher_planning_frame();
+               } catch (SQLException ex) {
+                   Logger.getLogger(Suppr_film_frame.class.getName()).log(Level.SEVERE, null, ex);
+               }
                 planning.setLocation(x);
                 planning.setVisible(true);
             }

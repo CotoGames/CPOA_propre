@@ -163,7 +163,7 @@ public class Générer_planning_frame extends javax.swing.JFrame {
     }//GEN-LAST:event_jRadioButton2ItemStateChanged
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
-        int idSelected = -1;
+        /*int idSelected = -1;
         boolean typeORsalle = false;
         
         //si rien n'a été sélectionné
@@ -197,6 +197,9 @@ public class Générer_planning_frame extends javax.swing.JFrame {
             afficher.setLocation(x);
             afficher.setVisible(true);
         }
+        */
+        
+        
     }//GEN-LAST:event_jButton1MouseClicked
      
     /**

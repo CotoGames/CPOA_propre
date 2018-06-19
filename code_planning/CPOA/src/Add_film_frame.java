@@ -251,7 +251,12 @@ public class Add_film_frame extends javax.swing.JFrame {
             if (reponse == YES_OPTION){
                 this.setVisible(false);
                 Point x = this.getLocation();
-                JFrame planning = new Afficher_planning_frame();
+                JFrame planning = null;
+                try {
+                    planning = new Afficher_planning_frame();
+                } catch (SQLException ex) {
+                    Logger.getLogger(Add_film_frame.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 planning.setLocation(x);
                 planning.setVisible(true);
             }
