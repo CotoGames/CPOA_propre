@@ -153,4 +153,10 @@ public class CreneauxDAO {
         BD_co.main(req);
         BD_co.main(req2);
     }
+    
+    public void setCreneaux(java.util.Date jDate, int idCren){
+        java.sql.Date sDate = new java.sql.Date(jDate.getTime());
+	String req = "UPDATE \"Creneaux\" SET \"Date\"="+sDate+" WHERE \"idCreneaux\"="+idCren;
+        BD_co.main(req);
+    }
 }

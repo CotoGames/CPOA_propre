@@ -73,10 +73,7 @@ public class Suppr_film_frame extends javax.swing.JFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+
             },
             new String [] {
                 "Nom Film", "Réalisateur", "Durée", "Type", "Créneau", "Salle"

@@ -1,6 +1,9 @@
 
+import Modeles.C_Mod_Film;
 import java.awt.Point;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
@@ -22,12 +25,24 @@ import static javax.swing.JOptionPane.YES_OPTION;
  */
 public class Mod_film_conf extends javax.swing.JFrame {
 
+    public C_Mod_Film controller = new C_Mod_Film();
+    
     /**
      * Creates new form Mod_film_conf
      */
-    public Mod_film_conf() {
+    public Mod_film_conf() throws SQLException {
         initComponents();
         this.setResizable(false);
+        
+        ArrayList<String> cren = new ArrayList<String>();
+        cren = controller.creneauxDispoSalle((String) jTable1.getValueAt(0,5));
+        if (cren.size()==0){
+            JOptionPane.showMessageDialog(rootPane,"Il n'y a plus de créneaux disponibles", "Il n'y a plus de créneaux disponibles",INFORMATION_MESSAGE);
+        }else{
+            for(int i=0;i<cren.size();i++){
+                jComboBox1.addItem(cren.get(i));
+            }
+        }
     }
 
     /**
@@ -134,6 +149,11 @@ public class Mod_film_conf extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    
+    public void rempltab(String val, int i) {
+        jTable1.setValueAt(val,0,i);
+    }
+            
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
            String nomFilmSelec = "NomTest";
            String horaireSelec = "HoraireTest";
@@ -144,7 +164,15 @@ public class Mod_film_conf extends javax.swing.JFrame {
            
            if (name == YES_OPTION){
                
-               //Add code to delete film with controller
+                String salle = (String) jTable1.getValueAt(0,5);
+                String creneaux = (String) jComboBox1.getSelectedItem();
+               try {
+                   controller.setCreneaux(creneaux,salle);
+               } catch (ParseException ex) {
+                   Logger.getLogger(Mod_film_conf.class.getName()).log(Level.SEVERE, null, ex);
+               } catch (SQLException ex) {
+                   Logger.getLogger(Mod_film_conf.class.getName()).log(Level.SEVERE, null, ex);
+               }
                
                 this.setVisible(false);
                 Point x = this.getLocation();
@@ -197,7 +225,11 @@ public class Mod_film_conf extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Mod_film_conf().setVisible(true);
+                try {
+                    new Mod_film_conf().setVisible(true);
+                } catch (SQLException ex) {
+                    Logger.getLogger(Mod_film_conf.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }

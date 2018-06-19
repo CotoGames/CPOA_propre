@@ -11,6 +11,7 @@ import Controller.SalleDAO;
 import Controller.TypeDAO;
 import java.sql.SQLException;
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
@@ -53,8 +54,24 @@ public class C_Mod_Film{
     public C_Mod_Film() {
     }
     
-    public void RecupFilmModChoisi(){
-        
+    public ArrayList<String> creneauxDispoSalle (String nomSalle) throws SQLException{
+        int idSalle = salleDAO.getidSalle(nomSalle);
+        ArrayList<Integer> creneauDisp = new ArrayList<Integer>();
+        creneauDisp = crenDAO.getIdCrenDispo(idSalle);
+        ArrayList<String> creneauString = new ArrayList<String>();
+        for (int i=0;i<creneauDisp.size();i++){
+            java.util.Date jDate = crenDAO.getDate(i);
+            String date = df.format(jDate);
+            creneauString.add(date);
+        }
+        return creneauString;
     }
+    
+    public void setCreneaux(String cren, String salle) throws ParseException, SQLException{
+        java.util.Date jDate = df.parse(cren);
+        int idSalle = salleDAO.getidSalle(salle);
+        int idCren = crenDAO.getIdcrenDate(jDate,idSalle);
+        crenDAO.setCreneaux(jDate,idCren);
+}
     
 }

@@ -150,12 +150,23 @@ public class Mod_film_frame extends javax.swing.JFrame {
         int nbSelect = jTable1.getSelectedRowCount();
         if (nbSelect == 0 || nbSelect>1){
              JOptionPane.showMessageDialog(rootPane,"Il faut selectionner un film", "Il faut selectionner des films",INFORMATION_MESSAGE);
-        } else {          
-            this.setVisible(false);
+        } else { 
             Point x = this.getLocation();
-            JFrame modfilm = new Mod_film_conf();
+            Mod_film_conf modfilm = null;
+            try {
+                modfilm = new Mod_film_conf();
+            } catch (SQLException ex) {
+                Logger.getLogger(Mod_film_frame.class.getName()).log(Level.SEVERE, null, ex);
+            }
             modfilm.setLocation(x);
             modfilm.setVisible(true);
+            
+            int row = jTable1.getSelectedRow();
+            for (int i=0;i<6;i++){
+                modfilm.rempltab((String) jTable1.getValueAt(row,i),i);
+            }
+            
+            this.setVisible(false);
         }
     }//GEN-LAST:event_jButton1MouseClicked
 

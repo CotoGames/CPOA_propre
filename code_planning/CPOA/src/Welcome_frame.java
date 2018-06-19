@@ -70,6 +70,11 @@ public class Welcome_frame extends javax.swing.JFrame {
                 jButton2MouseEntered(evt);
             }
         });
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("Afficher Planning");
         jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -166,7 +171,7 @@ public class Welcome_frame extends javax.swing.JFrame {
         try {
             this.setVisible(false);
             Point x = this.getLocation();
-            JFrame modify = new Mod_film_frame();
+            Mod_film_frame modify = new Mod_film_frame();
             modify.setLocation(x);
             modify.setVisible(true);
         } catch (SQLException ex) {
@@ -225,6 +230,10 @@ public class Welcome_frame extends javax.swing.JFrame {
          }
     
     }//GEN-LAST:event_jButton6MouseClicked
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
