@@ -11,6 +11,7 @@ import Controller.SalleDAO;
 import Controller.TypeDAO;
 import java.sql.SQLException;
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
@@ -50,4 +51,12 @@ public class C_Suppr_Film {
         
         return lTab;
     } 
+    
+    public void supprFilm(String date, String nom,String nomFilm) throws SQLException, ParseException{
+        int idFilm = filmDAO.getidFilm(nomFilm);
+        int idS = salleDAO.getidSalle(nom);
+        DateFormat df = new SimpleDateFormat("YYYY/MM/dd HH:mm");
+        java.util.Date jDate = df.parse(date);
+        crenDAO.supprFilm(jDate,idS, idFilm);
+    }
 }

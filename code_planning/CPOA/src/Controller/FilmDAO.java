@@ -24,6 +24,13 @@ public class FilmDAO {
         return titre;
     }
     
+    public int getidFilm(String nom) throws SQLException{
+        String req = "SELECT \"idFilm\" FROM \"Film\" WHERE \"Titre\"="+nom;
+        ResultSet res1 = BD_co.main(req);
+        res1.next();
+        return res1.getInt(1);
+    }
+    
     public String getRealisateur(int idFilm) throws SQLException{
         String req = "Select \"Realisateur\" FROM \"Film\" WHERE \"idFilm\"="+idFilm;
         ResultSet res1 = BD_co.main(req);

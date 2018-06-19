@@ -145,4 +145,12 @@ public class CreneauxDAO {
         int res = res1.getInt(1);
         return res;
     }
+    
+    public void supprFilm(java.util.Date date, int idSalle, int idFilm){
+        java.sql.Date sDate = new java.sql.Date(date.getTime());
+        String req = "UPDATE \"Creneaux\" SET \"dispo\" = 0, IDFILM=null WHERE \"Date\"="+sDate+" AND \"idSalle\"="+idSalle;
+        String req2 = "UPDATE \"Film\" SET \"nombre_proj\" = \"nombre_proj\"-1 WHERE \"idFilm\"="+idFilm;
+        BD_co.main(req);
+        BD_co.main(req2);
+    }
 }

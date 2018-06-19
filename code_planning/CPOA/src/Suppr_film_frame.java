@@ -4,6 +4,7 @@ import Modeles.C_Suppr_Film;
 import java.awt.Point;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -72,17 +73,17 @@ public class Suppr_film_frame extends javax.swing.JFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Nom Film", "Réalisateur", "Durée", "Type"
+                "Nom Film", "Réalisateur", "Durée", "Type", "Créneau", "Salle"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -121,12 +122,10 @@ public class Suppr_film_frame extends javax.swing.JFrame {
                         .addComponent(jLabel1)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 2, Short.MAX_VALUE)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 362, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jButton2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton1)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 374, Short.MAX_VALUE)
+                        .addComponent(jButton1))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addGap(18, 18, 18))
         );
         layout.setVerticalGroup(
@@ -167,9 +166,20 @@ public class Suppr_film_frame extends javax.swing.JFrame {
            int name;
            name = JOptionPane.showConfirmDialog(rootPane,msg, "Êtes-vous sûr ?",OK_CANCEL_OPTION,WARNING_MESSAGE);
            
-           if (name == YES_OPTION){
+            if (name == YES_OPTION){
                
-               //Add code to delete film with controller
+                int row = jTable1.getSelectedRow();
+                String date = (String) jTable1.getValueAt(row,4);
+                String salle = (String) jTable1.getValueAt(row,5);
+                String titre = (String) jTable1.getValueAt(row,0);
+               try {
+                   controller.supprFilm(titre,salle,titre);
+                   //Add code to delete film with controller
+               } catch (SQLException ex) {
+                   Logger.getLogger(Suppr_film_frame.class.getName()).log(Level.SEVERE, null, ex);
+               } catch (ParseException ex) {
+                   Logger.getLogger(Suppr_film_frame.class.getName()).log(Level.SEVERE, null, ex);
+               }
                
                 this.setVisible(false);
                 Point x = this.getLocation();
