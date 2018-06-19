@@ -26,6 +26,9 @@ public class FilmDAO {
         String realisateur = res1.getString(1);
         return realisateur;
     }
+
+    public FilmDAO() {
+    }
     
     public String getDuree(int idFilm) throws SQLException{
         String req = "Select \"Duree\" FROM \"Film\" WHERE \"idFilm\"="+idFilm;

@@ -18,6 +18,9 @@ public class TypeDAO {
         ResultSet res1 = BD_co.main(req);
         return res1.getInt(1);
     }
+
+    public TypeDAO() {
+    }
     
     public String getnomType(int idType) throws SQLException{
         String req = "SELECT NOMTYPE FROM \"Type\" WHERE \"idType\" = "+idType;
