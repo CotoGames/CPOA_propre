@@ -86,7 +86,7 @@ public class C_Generer_Planning {
             filmDAO.incrNb_proj(idFilm);
         }
     }
-    
+        
     public void addSeancedemain(int idSalle,int idCren) throws SQLException{
         java.util.Date date_cren = crenDAO.getDate(idCren);
         Calendar cal_cren, cal_demain;

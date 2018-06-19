@@ -1,6 +1,10 @@
 
+import Modeles.C_Generer_Planning;
 import java.awt.Point;
 import java.awt.event.ItemEvent;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import static javax.swing.JOptionPane.WARNING_MESSAGE;
@@ -17,6 +21,8 @@ import static javax.swing.JOptionPane.WARNING_MESSAGE;
  */
 public class Générer_planning_frame extends javax.swing.JFrame {
 
+    public C_Generer_Planning controller = new C_Generer_Planning();
+    
     /**
      * Creates new form Générer_planning_frame
      */
@@ -198,6 +204,24 @@ public class Générer_planning_frame extends javax.swing.JFrame {
             afficher.setVisible(true);
         }
         */
+        
+        for (int i=0; i<55; i++){
+            try {
+                controller.ajoutFilmPlanning(i);
+            } catch (SQLException ex) {
+                Logger.getLogger(Générer_planning_frame.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        this.setVisible(false);
+        Point x = this.getLocation();
+        JFrame afficher = null;
+        try {
+            afficher = new Afficher_planning_frame();
+        } catch (SQLException ex) {
+            Logger.getLogger(Générer_planning_frame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        afficher.setLocation(x);
+        afficher.setVisible(true);
         
         
     }//GEN-LAST:event_jButton1MouseClicked
