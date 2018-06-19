@@ -198,7 +198,12 @@ public class Welcome_frame extends javax.swing.JFrame {
     private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton5MouseClicked
         this.setVisible(false);
         Point x = this.getLocation();
-        JFrame suppr = new Suppr_film_frame();
+        JFrame suppr = null;
+        try {
+            suppr = new Suppr_film_frame();
+        } catch (SQLException ex) {
+            Logger.getLogger(Welcome_frame.class.getName()).log(Level.SEVERE, null, ex);
+        }
         suppr.setLocation(x);
         suppr.setVisible(true);
     }//GEN-LAST:event_jButton5MouseClicked

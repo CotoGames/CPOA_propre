@@ -1,8 +1,10 @@
 
 import Controller.BD_co;
+import Modeles.C_Suppr_Film;
 import java.awt.Point;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
@@ -11,6 +13,7 @@ import static javax.swing.JOptionPane.INFORMATION_MESSAGE;
 import static javax.swing.JOptionPane.OK_CANCEL_OPTION;
 import static javax.swing.JOptionPane.WARNING_MESSAGE;
 import static javax.swing.JOptionPane.YES_OPTION;
+import javax.swing.table.DefaultTableModel;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -24,37 +27,25 @@ import static javax.swing.JOptionPane.YES_OPTION;
  */
 public class Suppr_film_frame extends javax.swing.JFrame {
 
+    public C_Suppr_Film controller = new C_Suppr_Film();
+    
     /**
      * Creates new form Suppr_film_frame
      */
-    public Suppr_film_frame() {
+    public Suppr_film_frame() throws SQLException {
         initComponents();
         this.setResizable(false);
         
-        String txt = "";
-        int nbFilm = 0;
-        String req1 = "COUNT(*) FROM \"Film\"";
-        ResultSet res1 = BD_co.main(req1);
-        try {
-            if (res1.next()) {
-                nbFilm = res1.getInt(1);
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(Add_film_frame.class.getName()).log(Level.SEVERE, null, ex);
-        }
         
-        for (int i=0; i<nbFilm; i++){
-            
-            String req2 = "SELECT \"nomFilm\" FROM \"Film\" WHERE \"idFilm\"="+Integer.toString(i);
-            ResultSet res2 = BD_co.main(req2);
-            try {
-                txt = res2.getString(1);
-            } catch (SQLException ex) {
-                Logger.getLogger(Suppr_film_frame.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            
-            
-            //jTable1.add(, i);
+        ArrayList<Integer> lesCreneaux = new ArrayList<Integer>();
+        
+        lesCreneaux = controller.listeCreneauxPris();
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        
+        for (int i=0; i<lesCreneaux.size()-1; i++){
+            ArrayList<String> ligne = controller.RemplTableau(lesCreneaux.get(i));
+            Object[] data = {ligne.get(0), ligne.get(1), ligne.get(2), ligne.get(3), ligne.get(4), ligne.get(5)} ;
+            model.addRow(data);
         }
         
     }
@@ -228,7 +219,11 @@ public class Suppr_film_frame extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Suppr_film_frame().setVisible(true);
+                try {
+                    new Suppr_film_frame().setVisible(true);
+                } catch (SQLException ex) {
+                    Logger.getLogger(Suppr_film_frame.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
