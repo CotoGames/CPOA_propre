@@ -209,7 +209,6 @@ public class Welcome_frame extends javax.swing.JFrame {
 
     private void jButton6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton6MouseClicked
         String msg = "Voulez vous vider tout le planning ?";
-           
         int name;
         name = JOptionPane.showConfirmDialog(rootPane,msg, "Êtes-vous sûr ?",OK_CANCEL_OPTION,WARNING_MESSAGE);
 

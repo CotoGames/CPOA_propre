@@ -222,7 +222,11 @@ public class Afficher_planning_frame extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Suppr_film_frame().setVisible(true);
+                try {
+                    new Afficher_planning_frame().setVisible(true);
+                } catch (SQLException ex) {
+                    Logger.getLogger(Afficher_planning_frame.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }

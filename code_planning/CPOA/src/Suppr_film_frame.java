@@ -1,5 +1,6 @@
 
 import Controller.BD_co;
+import Modeles.C_Mod_Film;
 import java.awt.Point;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -24,39 +25,13 @@ import static javax.swing.JOptionPane.YES_OPTION;
  */
 public class Suppr_film_frame extends javax.swing.JFrame {
 
+     public C_Mod_Film controller = new C_Mod_Film();
     /**
      * Creates new form Suppr_film_frame
      */
     public Suppr_film_frame() {
         initComponents();
         this.setResizable(false);
-        
-        String txt = "";
-        int nbFilm = 0;
-        String req1 = "COUNT(*) FROM \"Film\"";
-        ResultSet res1 = BD_co.main(req1);
-        try {
-            if (res1.next()) {
-                nbFilm = res1.getInt(1);
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(Add_film_frame.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-        for (int i=0; i<nbFilm; i++){
-            
-            String req2 = "SELECT \"nomFilm\" FROM \"Film\" WHERE \"idFilm\"="+Integer.toString(i);
-            ResultSet res2 = BD_co.main(req2);
-            try {
-                txt = res2.getString(1);
-            } catch (SQLException ex) {
-                Logger.getLogger(Suppr_film_frame.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            
-            
-            //jTable1.add(, i);
-        }
-        
     }
     /**
      * This method is called from within the constructor to initialize the form.
