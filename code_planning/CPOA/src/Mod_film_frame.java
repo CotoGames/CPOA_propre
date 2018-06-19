@@ -33,7 +33,6 @@ public class Mod_film_frame extends javax.swing.JFrame {
         initComponents();
         this.setResizable(false);
         
-        
         ArrayList<Integer> lesCreneaux = controller.listeCreneauxPris();
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         
