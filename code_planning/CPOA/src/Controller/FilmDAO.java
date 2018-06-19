@@ -69,4 +69,9 @@ public class FilmDAO {
         }
         return id;
     }
+    
+    public void incrNb_proj(int idFilm){
+        String req = "UPDATE \"Film\" SET \"nombre_proj\"=\"nombre_proj\"+1 WHERE \"idFilm\" = "+idFilm;
+        BD_co.main(req);
+    }
 }

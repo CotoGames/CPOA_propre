@@ -1,10 +1,6 @@
 
 import Controller.BD_co;
-<<<<<<< HEAD
 import Modeles.C_Suppr_Film;
-=======
-import Modeles.C_Mod_Film;
->>>>>>> fa9345bf4b4af088e36b5e3dacddac78158a8134
 import java.awt.Point;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -31,19 +27,14 @@ import javax.swing.table.DefaultTableModel;
  */
 public class Suppr_film_frame extends javax.swing.JFrame {
 
-<<<<<<< HEAD
     public C_Suppr_Film controller = new C_Suppr_Film();
     
-=======
-     public C_Mod_Film controller = new C_Mod_Film();
->>>>>>> fa9345bf4b4af088e36b5e3dacddac78158a8134
     /**
      * Creates new form Suppr_film_frame
      */
     public Suppr_film_frame() throws SQLException {
         initComponents();
         this.setResizable(false);
-<<<<<<< HEAD
         
         
         ArrayList<Integer> lesCreneaux = new ArrayList<Integer>();
@@ -57,8 +48,6 @@ public class Suppr_film_frame extends javax.swing.JFrame {
             model.addRow(data);
         }
         
-=======
->>>>>>> fa9345bf4b4af088e36b5e3dacddac78158a8134
     }
     /**
      * This method is called from within the constructor to initialize the form.

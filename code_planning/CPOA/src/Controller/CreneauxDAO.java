@@ -136,4 +136,13 @@ public class CreneauxDAO {
         String req = "UPDATE \"Creneaux\" SET \"dispo\"=1, IDFILM="+idFilm+" WHERE \"idCren\"="+idCren;
         BD_co.main(req);
     }
+    
+    public int getIdcrenDate(java.util.Date jDate, int idSalle) throws SQLException{
+        java.sql.Date sDate = new java.sql.Date(jDate.getTime());
+        String req = "SELECT \"idCreneaux\" FROM \"Creneaux\" WHERE \"Date\"="+sDate+" AND \"idSalle\" ="+idSalle;
+        ResultSet res1 = BD_co.main(req);
+        res1.next();
+        int res = res1.getInt(1);
+        return res;
+    }
 }
