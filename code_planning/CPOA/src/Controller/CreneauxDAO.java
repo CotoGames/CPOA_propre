@@ -118,4 +118,22 @@ public class CreneauxDAO {
         res.add(1);
         return res;
     }
+    
+    public ArrayList<Integer> getIdCrenDispo(int idSalle) throws SQLException{
+        String req = "SELECT \"idCreneaux\" FROM \"Creneaux\" WHERE \"dispo\" = 0 AND \"idSalle\"="+idSalle+" ORDER BY \"Date\" DESC";
+        ResultSet res1 = BD_co.main(req);
+        ArrayList<Integer> res = new ArrayList<Integer>();
+        if(res1!=null){
+            while (res1.next()){
+                res.add(res1.getInt(1));
+            }
+        }
+        res.add(1);
+        return res;
+    }
+    
+    public void addFilm(int idCren, int idFilm){
+        String req = "UPDATE \"Creneaux\" SET \"dispo\"=1, IDFILM="+idFilm+" WHERE \"idCren\"="+idCren;
+        BD_co.main(req);
+    }
 }

@@ -27,6 +27,7 @@ public class Mod_film_conf extends javax.swing.JFrame {
      */
     public Mod_film_conf() {
         initComponents();
+        this.setResizable(false);
     }
 
     /**
