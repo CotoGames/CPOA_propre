@@ -26,4 +26,15 @@ public class JuresDAO {
         restab.add(origine);
         return restab;
     }
+    
+    public boolean getPresident(int idJures) throws SQLException{
+        String req = "Select \"president\" FROM \"Jures\" WHERE \"idJures\"="+idJures;
+        ResultSet res1 = BD_co.main(req);
+        int president =res1.getInt(1);
+        if (president==0){
+            return false;
+        }else{
+            return true;
+        }
+    }
 }
