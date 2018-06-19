@@ -27,10 +27,10 @@ public class FilmDAO {
         return realisateur;
     }
     
-    public int getDuree(int idFilm) throws SQLException{
+    public String getDuree(int idFilm) throws SQLException{
         String req = "Select \"Duree\" FROM \"Film\" WHERE \"idFilm\"="+idFilm;
         ResultSet res1 = BD_co.main(req);
-        int duree = res1.getInt(1);
+        String duree = res1.getString(1);
         return duree;
     }
     
