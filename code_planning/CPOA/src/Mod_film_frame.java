@@ -25,7 +25,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class Mod_film_frame extends javax.swing.JFrame {
 
-    public C_Mod_Film controller;
+    public C_Mod_Film controller = new C_Mod_Film();
     /**
      * Creates new form Suppr_film_frame
      */
@@ -33,7 +33,12 @@ public class Mod_film_frame extends javax.swing.JFrame {
         initComponents();
         this.setResizable(false);
         
+<<<<<<< HEAD
         ArrayList<Integer> lesCreneaux = controller.listeCreneauxPris();
+=======
+        ArrayList<Integer> lesCreneaux = new ArrayList<Integer>();
+        lesCreneaux = controller.listeCreneauxPris();
+>>>>>>> 37e33c8e3a2f4b7ad674c6161217d68e7d646d71
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         
         for (int i=0; i<lesCreneaux.size()-1; i++){

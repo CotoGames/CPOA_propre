@@ -23,6 +23,9 @@ public class CreneauxDAO {
         int id = res1.getInt(1);
         return id;
     }
+
+    public CreneauxDAO() {
+    }
     
     /*
     public ArrayList getidSalleFilm(int idCreneaux) throws SQLException{
@@ -79,11 +82,13 @@ public class CreneauxDAO {
    
     
     public ArrayList<Integer> getIDpris() throws SQLException{
-        String req = "SELECT \"idCreneaux\" FROM \"Creneaux\" WHERE \"dispo\"="+1;
+        String req = "SELECT \"idCreneaux\" FROM \"Creneaux\" WHERE \"dispo\" = 1";
         ResultSet res1 = BD_co.main(req);
         ArrayList<Integer> res = new ArrayList<Integer>();
-        while (res1.next()){
-            res.add(res1.getInt(1));
+        if(res1!=null){
+            while (res1.next()){
+                res.add(res1.getInt(1));
+            }
         }
         return res;
     }

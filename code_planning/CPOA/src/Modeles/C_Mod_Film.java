@@ -19,10 +19,10 @@ import java.util.ArrayList;
  * @author Tristan
  */
 public class C_Mod_Film{
-    public CreneauxDAO crenDAO;
-    public FilmDAO filmDAO;
-    public SalleDAO salleDAO;
-    public TypeDAO typeDAO;
+    public CreneauxDAO crenDAO = new CreneauxDAO();
+    public FilmDAO filmDAO = new FilmDAO();
+    public SalleDAO salleDAO = new SalleDAO();
+    public TypeDAO typeDAO = new TypeDAO();
     
     DateFormat df = new SimpleDateFormat("YYYY/MM/DD HH:mm");
     
@@ -49,6 +49,9 @@ public class C_Mod_Film{
         
         return lTab;
     } 
+
+    public C_Mod_Film() {
+    }
     
     public void RecupFilmModChoisi(){
         

@@ -26,6 +26,9 @@ public class JuresDAO {
         restab.add(origine);
         return restab;
     }
+
+    public JuresDAO() {
+    }
     
     public boolean getPresident(int idJures) throws SQLException{
         String req = "Select \"president\" FROM \"Jures\" WHERE \"idjures\"="+idJures;
