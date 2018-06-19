@@ -24,6 +24,7 @@ public class CreneauxDAO {
         return id;
     }
     
+    /*
     public ArrayList getidSalleFilm(int idCreneaux) throws SQLException{
         String req = "Select \"idSalle\", IDFILM FROM \"Creneaux\" WHERE \"idCreneaux\"="+idCreneaux;
         ResultSet res1 = BD_co.main(req);
@@ -33,8 +34,21 @@ public class CreneauxDAO {
         restab.add(idSalle);
         restab.add(idFilm);
         return restab;
+    }*/
+    
+    public int getidFilm(int idCreneaux) throws SQLException{
+        String req = "Select IDFILM FROM \"Creneaux\" WHERE \"idCreneaux\"="+idCreneaux;
+        ResultSet res1 = BD_co.main(req);
+        int idFilm = res1.getInt(1);
+        return idFilm;
     }
     
+    public int getidSalle(int idCreneaux) throws SQLException{
+        String req = "Select \"idSalle\" FROM \"Creneaux\" WHERE \"idCreneaux\"="+idCreneaux;
+        ResultSet res1 = BD_co.main(req);
+        int idSalle = res1.getInt(1);
+        return idSalle;
+    }
     public java.util.Date getDate(int idCreneaux) throws SQLException{
         String req = "Select \"Date\" FROM \"Creneaux\" WHERE \"idCreneaux\"="+idCreneaux;
         ResultSet res1 = BD_co.main(req);
@@ -62,6 +76,7 @@ public class CreneauxDAO {
             return true;
         }
     }
+   
     
     public ArrayList<Integer> getIDpris() throws SQLException{
         String req = "SELECT \"idCreneaux\" FROM \"Creneaux\" WHERE \"dispo\"="+1;
