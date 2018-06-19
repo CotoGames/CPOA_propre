@@ -1,10 +1,15 @@
 
+import Controller.CreneauxDAO;
+import Modeles.C_Mod_Film;
 import java.awt.Point;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import static javax.swing.JOptionPane.INFORMATION_MESSAGE;
 import static javax.swing.JOptionPane.OK_CANCEL_OPTION;
 import static javax.swing.JOptionPane.WARNING_MESSAGE;
+import javax.swing.table.DefaultTableModel;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -18,12 +23,23 @@ import static javax.swing.JOptionPane.WARNING_MESSAGE;
  */
 public class Mod_film_frame extends javax.swing.JFrame {
 
+    public C_Mod_Film controller;
     /**
      * Creates new form Suppr_film_frame
      */
-    public Mod_film_frame() {
+    public Mod_film_frame() throws SQLException {
         initComponents();
         this.setResizable(false);
+        
+        
+        ArrayList<Integer> lesCreneaux = controller.listeCreneauxPris();
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        
+        for (int i=0; i<lesCreneaux.size()-1; i++){
+            ArrayList<String> ligne = controller.RemplTableau(lesCreneaux.get(i));
+            Object[] data = {ligne.get(0), ligne.get(1), ligne.get(2), ligne.get(3), ligne.get(4), ligne.get(5)} ;
+            model.addRow(data);
+        }
     }
 
     /**
@@ -72,6 +88,11 @@ public class Mod_film_frame extends javax.swing.JFrame {
         jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton1MouseClicked(evt);
+            }
+        });
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
             }
         });
 
@@ -131,6 +152,8 @@ public class Mod_film_frame extends javax.swing.JFrame {
         if (nbSelect == 0 || nbSelect>1){
              JOptionPane.showMessageDialog(rootPane,"Il faut selectionner un film", "Il faut selectionner des films",INFORMATION_MESSAGE);
         } else {
+            C_Mod_Film.RecupFilmModChoisi();
+            
             this.setVisible(false);
             Point x = this.getLocation();
             JFrame modfilm = new Mod_film_conf();
@@ -138,6 +161,10 @@ public class Mod_film_frame extends javax.swing.JFrame {
             modfilm.setVisible(true);
         }
     }//GEN-LAST:event_jButton1MouseClicked
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
