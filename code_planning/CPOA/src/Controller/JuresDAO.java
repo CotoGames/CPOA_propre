@@ -20,7 +20,7 @@ public class JuresDAO {
         String nomJ = res1.getString(1);
         String metier = res1.getString(2);
         String origine = res1.getString(3);
-        ArrayList restab = new ArrayList();
+        ArrayList<String> restab = new ArrayList();
         restab.add(nomJ);
         restab.add(metier);
         restab.add(origine);
