@@ -16,6 +16,7 @@ public class SalleDAO {
     public String getnomSalle(int idSalle) throws SQLException{
         String req = "SELECT \"nomSalle\" FROM \"Salle\" WHERE \"idSalle\"="+idSalle;
         ResultSet res1 = BD_co.main(req);
+        res1.next();
         String nom = res1.getString(1);
         return nom;
     }
