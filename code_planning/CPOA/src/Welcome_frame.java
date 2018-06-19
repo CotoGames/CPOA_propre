@@ -1,6 +1,9 @@
 
 import java.awt.Dimension;
 import java.awt.Point;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 
 /*
@@ -138,11 +141,15 @@ public class Welcome_frame extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2MouseEntered
 
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
-        this.setVisible(false);
-        Point x = this.getLocation();
-        JFrame modify = new Mod_film_frame();
-        modify.setLocation(x);
-        modify.setVisible(true);
+        try {
+            this.setVisible(false);
+            Point x = this.getLocation();
+            JFrame modify = new Mod_film_frame();
+            modify.setLocation(x);
+            modify.setVisible(true);
+        } catch (SQLException ex) {
+            Logger.getLogger(Welcome_frame.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jButton2MouseClicked
 
     private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked

@@ -4,6 +4,8 @@ import Modeles.C_Mod_Film;
 import java.awt.Point;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import static javax.swing.JOptionPane.INFORMATION_MESSAGE;
@@ -151,9 +153,7 @@ public class Mod_film_frame extends javax.swing.JFrame {
         int nbSelect = jTable1.getSelectedRowCount();
         if (nbSelect == 0 || nbSelect>1){
              JOptionPane.showMessageDialog(rootPane,"Il faut selectionner un film", "Il faut selectionner des films",INFORMATION_MESSAGE);
-        } else {
-            C_Mod_Film.RecupFilmModChoisi();
-            
+        } else {          
             this.setVisible(false);
             Point x = this.getLocation();
             JFrame modfilm = new Mod_film_conf();
@@ -196,7 +196,11 @@ public class Mod_film_frame extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Mod_film_frame().setVisible(true);
+                try {
+                    new Mod_film_frame().setVisible(true);
+                } catch (SQLException ex) {
+                    Logger.getLogger(Mod_film_frame.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
