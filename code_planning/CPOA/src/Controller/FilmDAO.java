@@ -16,14 +16,21 @@ public class FilmDAO {
     public String getTitre(int idFilm) throws SQLException{
         String req = "Select \"Titre\" FROM \"Film\" WHERE \"idFilm\"="+idFilm;
         ResultSet res1 = BD_co.main(req);
-        String titre = res1.getString(1);
+        String titre = null;
+        while (res1.next()){
+            titre = res1.getString(1);
+        }
+        
         return titre;
     }
     
     public String getRealisateur(int idFilm) throws SQLException{
         String req = "Select \"Realisateur\" FROM \"Film\" WHERE \"idFilm\"="+idFilm;
         ResultSet res1 = BD_co.main(req);
-        String realisateur = res1.getString(1);
+        String realisateur = "";
+        while (res1.next()){
+            realisateur = res1.getString(1);
+        }
         return realisateur;
     }
 
@@ -33,7 +40,10 @@ public class FilmDAO {
     public String getDuree(int idFilm) throws SQLException{
         String req = "Select \"Duree\" FROM \"Film\" WHERE \"idFilm\"="+idFilm;
         ResultSet res1 = BD_co.main(req);
-        String duree = res1.getString(1);
+        String duree = "";
+        while(res1.next()){
+            duree = res1.getString(1);
+        }
         return duree;
     }
     
@@ -53,6 +63,10 @@ public class FilmDAO {
     public int getType(int idFilm) throws SQLException{
         String req = "Select IDTYPE FROM \"Film\" WHERE \"idFilm\"="+idFilm;
         ResultSet res1 = BD_co.main(req);
-        return res1.getInt(1);
+        int id = 0;
+        while (res1.next()){
+            id = res1.getInt(1);
+        }
+        return id;
     }
 }

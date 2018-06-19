@@ -42,23 +42,33 @@ public class CreneauxDAO {
     public int getidFilm(int idCreneaux) throws SQLException{
         String req = "Select IDFILM FROM \"Creneaux\" WHERE \"idCreneaux\"="+idCreneaux;
         ResultSet res1 = BD_co.main(req);
-        int idFilm = res1.getInt(1);
+        int idFilm = 0;
+        while (res1.next()){
+            idFilm = res1.getInt(1);
+        }
         return idFilm;
     }
     
     public int getidSalle(int idCreneaux) throws SQLException{
         String req = "Select \"idSalle\" FROM \"Creneaux\" WHERE \"idCreneaux\"="+idCreneaux;
         ResultSet res1 = BD_co.main(req);
+        res1.next();
         int idSalle = res1.getInt(1);
         return idSalle;
     }
     public java.util.Date getDate(int idCreneaux) throws SQLException{
         String req = "Select \"Date\" FROM \"Creneaux\" WHERE \"idCreneaux\"="+idCreneaux;
         ResultSet res1 = BD_co.main(req);
-        java.sql.Date date = res1.getDate(1);
-        java.util.Date jDate = new Date(date.getTime());
-        Calendar cal = GregorianCalendar.getInstance();
-        cal.setTime(jDate);
+        java.sql.Date date;
+        java.util.Date jDate = null;
+        Calendar cal;
+        while (res1.next()){
+            date = res1.getDate(1);
+            jDate = new Date(date.getTime());
+            cal = GregorianCalendar.getInstance();
+            cal.setTime(jDate);
+        }
+        
         return jDate;
     }
     
@@ -90,6 +100,7 @@ public class CreneauxDAO {
                 res.add(res1.getInt(1));
             }
         }
+        res.add(1);
         return res;
     }
 }

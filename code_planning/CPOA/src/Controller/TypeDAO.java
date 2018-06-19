@@ -16,7 +16,11 @@ public class TypeDAO {
     public int getidType(String nomType) throws SQLException{
         String req = "SELECT \"idType\" FROM \"Type\" WHERE NOMTYPE = "+nomType;
         ResultSet res1 = BD_co.main(req);
-        return res1.getInt(1);
+        int id = 0;
+        while (res1.next()){
+            id = res1.getInt(1);
+        }
+        return id;
     }
 
     public TypeDAO() {
@@ -25,6 +29,10 @@ public class TypeDAO {
     public String getnomType(int idType) throws SQLException{
         String req = "SELECT NOMTYPE FROM \"Type\" WHERE \"idType\" = "+idType;
         ResultSet res1 = BD_co.main(req);
-        return res1.getString(1);
+        String nom = "";
+        while (res1.next()){
+            nom = res1.getString(1);
+        }
+        return nom;
     }
 }
