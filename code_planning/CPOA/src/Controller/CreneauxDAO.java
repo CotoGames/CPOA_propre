@@ -147,7 +147,9 @@ public class CreneauxDAO {
     
     public int getIdcrenDate(java.util.Date jDate, int idSalle) throws SQLException{
         java.sql.Date sDate = new java.sql.Date(jDate.getTime());
-        String req = "SELECT \"idCreneaux\" FROM \"Creneaux\" WHERE \"Date\"=TO_DATE("+sDate+",'YY-MM-DD') AND \"idSalle\" ="+idSalle;
+        DateFormat df = new SimpleDateFormat("yyyy/MM/dd HH:mm");
+        String dateS = df.format(jDate);
+        String req = "SELECT \"idCreneaux\" FROM \"Creneaux\" WHERE \"Date\"=TO_DATE('"+dateS+"','YYYY/MM/DD HH24:MI') AND \"idSalle\" ="+idSalle;
         ResultSet res1 = BD_co.main(req);
         res1.next();
         int res = res1.getInt(1);

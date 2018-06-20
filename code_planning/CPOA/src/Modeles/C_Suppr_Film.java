@@ -56,10 +56,9 @@ public class C_Suppr_Film {
         System.out.println(nom);
         int idFilm = filmDAO.getidFilm(nomFilm);
         int idS = salleDAO.getidSalle(nom);
-        DateFormat df = new SimpleDateFormat("YYYY/MM/dd HH:mm");
+        DateFormat df = new SimpleDateFormat("yyyy/MM/dd HH:mm");
         java.util.Date jDate = df.parse(date);
         int nbproj = filmDAO.getnbProj(idFilm);
-        System.out.println("ICI");
         crenDAO.supprFilm(jDate,idS, idFilm, nbproj);
     }
 }
