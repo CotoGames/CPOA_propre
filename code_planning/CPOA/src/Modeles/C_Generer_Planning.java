@@ -60,6 +60,7 @@ public class C_Generer_Planning {
                     nb_proj++;						 
                 }
             }
+            System.out.println(nouvCren+" ID CREN");
             addSeancedemain(idSalle, nouvCren);
         }
         
@@ -89,19 +90,20 @@ public class C_Generer_Planning {
         
     public void addSeancedemain(int idSalle,int idCren) throws SQLException{
         java.util.Date date_cren = crenDAO.getDate(idCren);
+        System.out.println(date_cren);
         Calendar cal_cren, cal_demain;
         cal_cren = GregorianCalendar.getInstance();
         cal_cren.setTime(date_cren);
         cal_demain = GregorianCalendar.getInstance();
         cal_demain.setTime(date_cren);
-        cal_demain.add(Calendar.DATE, 1);
+        cal_demain.add(Calendar.DAY_OF_YEAR, 1);
         date_cren = cal_demain.getTime();
+        System.out.println(date_cren);
         if (idSalle == 0){ 
             crenDAO.getIdcrenDate(date_cren,3);
         }else if(idSalle == 1){
             crenDAO.getIdcrenDate(date_cren,4);
         }
-
     }
     
 }

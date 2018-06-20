@@ -20,6 +20,7 @@ public class TypeDAO {
         while (res1.next()){
             id = res1.getInt(1);
         }
+        BD_co.BD_close();
         return id;
     }
 
@@ -33,6 +34,7 @@ public class TypeDAO {
         while (res1.next()){
             nom = res1.getString(1);
         }
+        BD_co.BD_close();
         return nom;
     }
 }

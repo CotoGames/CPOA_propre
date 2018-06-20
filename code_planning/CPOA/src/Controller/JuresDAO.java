@@ -26,7 +26,7 @@ public class JuresDAO {
             restab.add(metier);
             restab.add(origine);
         }
-        
+        BD_co.BD_close();
         return restab;
     }
 
@@ -40,6 +40,7 @@ public class JuresDAO {
         while(res1.next()){
             president =res1.getInt(1);
         }
+        BD_co.BD_close();
         if (president==0){
             return false;
         }else{
@@ -54,6 +55,7 @@ public class JuresDAO {
         while (res1.next()){
             nbproj = res1.getInt(1);
         }
+        BD_co.BD_close();
         return nbproj;
     }
     
@@ -64,6 +66,7 @@ public class JuresDAO {
         while(res1.next()){
             type = res1.getInt(1);
         }
+        BD_co.BD_close();
         return type;
     }
 }

@@ -38,6 +38,11 @@ public class Mod_film_conf extends javax.swing.JFrame {
         cren = controller.creneauxDispoSalle((String) jTable1.getValueAt(0,5));
         if (cren.size()==0){
             JOptionPane.showMessageDialog(rootPane,"Il n'y a plus de créneaux disponibles", "Il n'y a plus de créneaux disponibles",INFORMATION_MESSAGE);
+            this.setVisible(false);
+            Point x = this.getLocation();
+            JFrame welcome = new Welcome_frame();
+            welcome.setLocation(x);
+            welcome.setVisible(true);
         }else{
             for(int i=0;i<cren.size();i++){
                 jComboBox1.addItem(cren.get(i));

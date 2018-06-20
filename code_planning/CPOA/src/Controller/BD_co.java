@@ -11,6 +11,8 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.sql.*;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -18,8 +20,11 @@ import java.util.Scanner;
  */
 public class BD_co {
        
-    public static String passwd = ""; 
-    public static final String user = "root"; 
+    //public static String passwd = ""; 
+    //public static final String user = "root"; 
+    public static final String user = "p1623107";
+    public static final String passwd = "288357";
+    public static Connection connection ;
     /**
      * @param args the command line arguments
      */
@@ -30,22 +35,22 @@ public class BD_co {
         // TODO code application logic here
         try
         {
-            System.out.println(passwd);
+            //System.out.println(passwd);
             //configuration du driver
-            Class.forName("com.mysql.jdbc.Driver"); 
+            Class.forName("oracle.jdbc.driver.OracleDriver"); 
             //CONNECTION AU SGBD 
             //URL du serveur de BD
 
-            String url = "jdbc:mysql://206.189.251.72"; 
+            //String url = "jdbc:mysql://206.189.251.72"; 
+            String url = "jdbc:oracle:thin:@iutdoua-oracle.univ-lyon1.fr:1521:orcl";
             //connexion à l’URL en précisant l’utilisateur et 
             // le mot de passe d’accès à la BD
 
-            Connection connection = DriverManager.getConnection(url,user,passwd); 
+            connection = DriverManager.getConnection(url,user,passwd); 
             //Création de l'objet gérant les requêtes 
             Statement statement = connection.createStatement();
             //récupération du résultat d'une requête
             ResultSet result  = statement.executeQuery(requete);
-            connection.close();
             return result;
             
         }
@@ -57,14 +62,23 @@ public class BD_co {
         
         return null;
     }
-
-    public BD_co() throws FileNotFoundException {
+    
+    public static void BD_close(){
+        try {
+            if(connection !=null)
+                connection.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(BD_co.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+   /* public BD_co() throws FileNotFoundException {
         passwd = "";
         File file = new File("./pswd.txt");
         Scanner sc;
         sc = new Scanner(file);
         passwd = sc.nextLine();
-    }
+    }*/
     
 }
 

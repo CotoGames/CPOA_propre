@@ -23,6 +23,7 @@ public class CreneauxDAO {
         String req = "Select \"idCreneaux\" FROM \"Creneaux\" WHERE \"idSalle\"="+idSalle+" AND IDFILM="+idFilm;
         ResultSet res1 = BD_co.main(req);
         int id = res1.getInt(1);
+        BD_co.BD_close();
         return id;
     }
 
@@ -48,6 +49,7 @@ public class CreneauxDAO {
         while (res1.next()){
             idFilm = res1.getInt(1);
         }
+        BD_co.BD_close();
         return idFilm;
     }
     
@@ -56,6 +58,7 @@ public class CreneauxDAO {
         ResultSet res1 = BD_co.main(req);
         res1.next();
         int idSalle = res1.getInt(1);
+        BD_co.BD_close();
         return idSalle;
     }
     public java.util.Date getDate(int idCreneaux) throws SQLException{
@@ -70,7 +73,7 @@ public class CreneauxDAO {
             cal = GregorianCalendar.getInstance();
             cal.setTime(jDate);
         }
-        
+        BD_co.BD_close();
         return jDate;
     }
     
@@ -78,6 +81,7 @@ public class CreneauxDAO {
         String req1 = "COUNT(*) FROM \"Creneaux\" WHERE \"dispo\"=1";
         ResultSet res1 = BD_co.main(req1);
         int nbDispont = res1.getInt(1);
+        BD_co.BD_close();
         return nbDispont;
     }
     
@@ -85,6 +89,7 @@ public class CreneauxDAO {
         String req1 = "SELECT \"dispo\" FROM \"Creneaux\" WHERE \"idCreneaux\"="+idCreneaux;
         ResultSet res1 = BD_co.main(req1);
         int notbool = res1.getInt(1);
+        BD_co.BD_close();
         if(notbool == 0){
             return false;
         }else{
@@ -102,7 +107,7 @@ public class CreneauxDAO {
                 res.add(res1.getInt(1));
             }
         }
-        res.add(1);
+        BD_co.BD_close();
         return res;
     }
     
@@ -115,12 +120,12 @@ public class CreneauxDAO {
                 res.add(res1.getInt(1));
             }
         }
-        res.add(1);
+        BD_co.BD_close();
         return res;
     }
     
     public ArrayList<Integer> getIdCrenDispo(int idSalle) throws SQLException{
-        String req = "SELECT \"idCreneaux\" FROM \"Creneaux\" WHERE \"dispo\" = 0 AND \"idSalle\"="+idSalle+" ORDER BY \"Date\" DESC";
+        String req = "SELECT \"idCreneaux\" FROM \"Creneaux\" WHERE \"dispo\" = 0 AND \"idSalle\"="+idSalle+" ORDER BY \"Date\" ASC";
         ResultSet res1 = BD_co.main(req);
         ArrayList<Integer> res = new ArrayList<Integer>();
         if(res1!=null){
@@ -128,35 +133,50 @@ public class CreneauxDAO {
                 res.add(res1.getInt(1));
             }
         }
-        res.add(1);
+        BD_co.BD_close();
         return res;
     }
     
     public void addFilm(int idCren, int idFilm){
         String req = "UPDATE \"Creneaux\" SET \"dispo\"=1, IDFILM="+idFilm+" WHERE \"idCren\"="+idCren;
         BD_co.main(req);
+        BD_co.BD_close();
     }
     
     public int getIdcrenDate(java.util.Date jDate, int idSalle) throws SQLException{
         java.sql.Date sDate = new java.sql.Date(jDate.getTime());
-        String req = "SELECT \"idCreneaux\" FROM \"Creneaux\" WHERE \"Date\"="+sDate+" AND \"idSalle\" ="+idSalle;
+        System.out.println(jDate+"JDATE");
+        System.out.println(sDate+"SDATE");
+        //ICI CA STOPPE
+        String req = "SELECT \"idCreneaux\" FROM \"Creneaux\" WHERE \"Date\"=TO_DATE("+sDate+",'YY-MM-DD') AND \"idSalle\" ="+idSalle;
         ResultSet res1 = BD_co.main(req);
+        System.out.println("ici");
         res1.next();
         int res = res1.getInt(1);
+        System.out.println(res+"IDCREN");
+        BD_co.BD_close();
         return res;
     }
     
     public void supprFilm(java.util.Date date, int idSalle, int idFilm){
         java.sql.Date sDate = new java.sql.Date(date.getTime());
-        String req = "UPDATE \"Creneaux\" SET \"dispo\" = 0, IDFILM=null WHERE \"Date\"="+sDate+" AND \"idSalle\"="+idSalle;
+        String req = "UPDATE \"Creneaux\" SET \"dispo\" = 0, IDFILM=null WHERE \"Date\""+sDate+" AND \"idSalle\"="+idSalle;
         String req2 = "UPDATE \"Film\" SET \"nombre_proj\" = \"nombre_proj\"-1 WHERE \"idFilm\"="+idFilm;
         BD_co.main(req);
         BD_co.main(req2);
+        BD_co.BD_close();
     }
     
     public void setCreneaux(java.util.Date jDate, int idCren){
         java.sql.Date sDate = new java.sql.Date(jDate.getTime());
 	String req = "UPDATE \"Creneaux\" SET \"Date\"="+sDate+" WHERE \"idCreneaux\"="+idCren;
         BD_co.main(req);
+        BD_co.BD_close();
+    }
+    
+    public void viderCren (int idCren){
+        String req = "UPDATE \"Creneaux\" SET \"dispo\" = 0, IDFILM=null WHERE \"idCren\"="+idCren;
+        BD_co.main(req);
+        BD_co.BD_close();
     }
 }
