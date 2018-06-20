@@ -33,13 +33,12 @@ public class Mod_film_frame extends javax.swing.JFrame {
         initComponents();
         this.setResizable(false);
         
-        
         ArrayList<Integer> lesCreneaux = new ArrayList<Integer>();
         
         lesCreneaux = controller.listeCreneauxPris();
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         
-        for (int i=0; i<lesCreneaux.size()-1; i++){
+        for (int i=0; i<lesCreneaux.size(); i++){
             ArrayList<String> ligne = controller.RemplTableau(lesCreneaux.get(i));
             Object[] data = {ligne.get(0), ligne.get(1), ligne.get(2), ligne.get(3), ligne.get(4), ligne.get(5)} ;
             model.addRow(data);

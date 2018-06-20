@@ -42,7 +42,7 @@ public class Afficher_planning_frame extends javax.swing.JFrame {
         lesCreneaux = controller.listeCreneauxSalle(jComboBox1.getSelectedIndex());
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         
-        for (int i=0; i<lesCreneaux.size()-1; i++){
+        for (int i=0; i<lesCreneaux.size(); i++){
             ArrayList<String> ligne = controller.RemplTableau(lesCreneaux.get(i));
             Object[] data = {ligne.get(0), ligne.get(1), ligne.get(2), ligne.get(3), ligne.get(4), ligne.get(5)} ;
             model.addRow(data);
@@ -73,10 +73,7 @@ public class Afficher_planning_frame extends javax.swing.JFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+
             },
             new String [] {
                 "Nom Film", "Réalisateur", "Durée", "Type", "Créneau", "Salle"
@@ -121,17 +118,18 @@ public class Afficher_planning_frame extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel2)
-                        .addGap(18, 18, 18)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(42, 42, 42))
+                        .addComponent(jButton2)
+                        .addContainerGap(484, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton2)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 362, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(20, Short.MAX_VALUE))))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jScrollPane1)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel2)
+                                .addGap(18, 18, 18)
+                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(42, 42, 42))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -174,7 +172,7 @@ public class Afficher_planning_frame extends javax.swing.JFrame {
         }
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         
-        for (int i=0; i<lesCreneaux.size()-1; i++){
+        for (int i=0; i<lesCreneaux.size(); i++){
             ArrayList<String> ligne = null;
             try {
                 ligne = controller.RemplTableau(lesCreneaux.get(i));

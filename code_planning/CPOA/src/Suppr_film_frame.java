@@ -43,7 +43,7 @@ public class Suppr_film_frame extends javax.swing.JFrame {
         lesCreneaux = controller.listeCreneauxPris();
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         
-        for (int i=0; i<lesCreneaux.size()-1; i++){
+        for (int i=0; i<lesCreneaux.size(); i++){
             ArrayList<String> ligne = controller.RemplTableau(lesCreneaux.get(i));
             Object[] data = {ligne.get(0), ligne.get(1), ligne.get(2), ligne.get(3), ligne.get(4), ligne.get(5)} ;
             model.addRow(data);
@@ -166,12 +166,11 @@ public class Suppr_film_frame extends javax.swing.JFrame {
             if (name == YES_OPTION){
                
                 int row = jTable1.getSelectedRow();
-                String date = (String) jTable1.getValueAt(row,4);
+                String date = (String) jTable1.getValueAt(row,4);;
                 String salle = (String) jTable1.getValueAt(row,5);
                 String titre = (String) jTable1.getValueAt(row,0);
-               try {
-                   controller.supprFilm(titre,salle,titre);
-                   //Add code to delete film with controller
+                try {
+                   controller.supprFilm(date,salle,titre);
                } catch (SQLException ex) {
                    Logger.getLogger(Suppr_film_frame.class.getName()).log(Level.SEVERE, null, ex);
                } catch (ParseException ex) {

@@ -25,7 +25,7 @@ public class FilmDAO {
     }
     
     public int getidFilm(String nom) throws SQLException{
-        String req = "SELECT \"idFilm\" FROM \"Film\" WHERE \"Titre\"="+nom;
+        String req = "SELECT \"idFilm\" FROM \"Film\" WHERE \"Titre\"='"+nom+"'";
         ResultSet res1 = BD_co.main(req);
         res1.next();
         int id = res1.getInt(1);
@@ -88,6 +88,14 @@ public class FilmDAO {
     public void incrNb_proj(int idFilm){
         String req = "UPDATE \"Film\" SET \"nombre_proj\"=\"nombre_proj\"+1 WHERE \"idFilm\" = "+idFilm;
         BD_co.main(req);
+        BD_co.BD_close();
+    }
+    
+    public void setNb_proj0(){
+        String req = "UPDATE \"Film\" SET \"nombre_proj\"= 0";
+        String req1 = "UPDATE \"Creneaux\" SET \"dispo\"=0, IDFILM=null";
+        BD_co.main(req);
+        BD_co.main(req1);
         BD_co.BD_close();
     }
 }

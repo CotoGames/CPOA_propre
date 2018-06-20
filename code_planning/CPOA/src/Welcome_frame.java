@@ -1,4 +1,6 @@
 
+import Modeles.C_Suppr_Film;
+import Modeles.C_Welcome_frame;
 import java.awt.Dimension;
 import java.awt.Point;
 import java.sql.SQLException;
@@ -21,7 +23,8 @@ import static javax.swing.JOptionPane.YES_OPTION;
  * @author p1623107
  */
 public class Welcome_frame extends javax.swing.JFrame {
-
+    
+    public C_Welcome_frame controller = new C_Welcome_frame();
     /**
      * Creates new form Welcome_frame
      */
@@ -223,11 +226,8 @@ public class Welcome_frame extends javax.swing.JFrame {
         name = JOptionPane.showConfirmDialog(rootPane,msg, "Êtes-vous sûr ?",OK_CANCEL_OPTION,WARNING_MESSAGE);
 
         if (name == YES_OPTION){
-
-            
-
-             
-         }
+            controller.resetPlanning();
+        }
     
     }//GEN-LAST:event_jButton6MouseClicked
 

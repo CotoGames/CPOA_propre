@@ -46,8 +46,7 @@ public class C_Mod_Film{
         String dateCren = df.format(crenDAO.getDate(idCren));
         lTab.add(4, dateCren);
         int idSalle = crenDAO.getidSalle(idCren);
-        lTab.add(5, salleDAO.getnomSalle(idSalle));
-        
+        lTab.add(5, salleDAO.getnomSalle(idSalle)); 
         return lTab;
     } 
 

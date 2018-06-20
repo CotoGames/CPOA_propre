@@ -77,7 +77,7 @@ public class BD_co {
         File file = new File("./pswd.txt");
         Scanner sc;
         sc = new Scanner(file);
-        passwd = sc.nextLine();
+        passwd = sc.nextLine().nextLine();
     }*/
     
 }

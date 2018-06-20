@@ -59,6 +59,7 @@ public class CreneauxDAO {
         res1.next();
         int idSalle = res1.getInt(1);
         BD_co.BD_close();
+        System.out.println(idSalle);
         return idSalle;
     }
     public java.util.Date getDate(int idCreneaux) throws SQLException{
@@ -118,6 +119,7 @@ public class CreneauxDAO {
         if(res1!=null){
             while (res1.next()){
                 res.add(res1.getInt(1));
+                System.out.println(res.get(0));
             }
         }
         BD_co.BD_close();
@@ -138,32 +140,31 @@ public class CreneauxDAO {
     }
     
     public void addFilm(int idCren, int idFilm){
-        String req = "UPDATE \"Creneaux\" SET \"dispo\"=1, IDFILM="+idFilm+" WHERE \"idCren\"="+idCren;
+        String req = "UPDATE \"Creneaux\" SET \"dispo\"=1, IDFILM="+idFilm+" WHERE \"idCreneaux\"="+idCren;
         BD_co.main(req);
         BD_co.BD_close();
     }
     
     public int getIdcrenDate(java.util.Date jDate, int idSalle) throws SQLException{
         java.sql.Date sDate = new java.sql.Date(jDate.getTime());
-        System.out.println(jDate+"JDATE");
-        System.out.println(sDate+"SDATE");
-        //ICI CA STOPPE
         String req = "SELECT \"idCreneaux\" FROM \"Creneaux\" WHERE \"Date\"=TO_DATE("+sDate+",'YY-MM-DD') AND \"idSalle\" ="+idSalle;
         ResultSet res1 = BD_co.main(req);
-        System.out.println("ici");
         res1.next();
         int res = res1.getInt(1);
-        System.out.println(res+"IDCREN");
         BD_co.BD_close();
         return res;
     }
     
-    public void supprFilm(java.util.Date date, int idSalle, int idFilm){
+    public void supprFilm(java.util.Date date, int idSalle, int idFilm, int nbproj){
         java.sql.Date sDate = new java.sql.Date(date.getTime());
-        String req = "UPDATE \"Creneaux\" SET \"dispo\" = 0, IDFILM=null WHERE \"Date\""+sDate+" AND \"idSalle\"="+idSalle;
-        String req2 = "UPDATE \"Film\" SET \"nombre_proj\" = \"nombre_proj\"-1 WHERE \"idFilm\"="+idFilm;
+        nbproj --;
+        DateFormat df = new SimpleDateFormat("yyyy/MM/dd HH:mm");
+        String dateS = df.format(date);
+        String req = "UPDATE \"Creneaux\" SET \"dispo\" = 0, IDFILM=null WHERE \"Date\"= TO_DATE('"+dateS+"','YYYY/MM/DD HH24:MI') AND \"idSalle\"="+idSalle;
+        String req2 = "UPDATE \"Film\" SET \"nombre_proj\" = "+nbproj+" WHERE \"idFilm\"="+idFilm;
         BD_co.main(req);
-        BD_co.main(req2);
+        if(nbproj>=0)
+            BD_co.main(req2);
         BD_co.BD_close();
     }
     

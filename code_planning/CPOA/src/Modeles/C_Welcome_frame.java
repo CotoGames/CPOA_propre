@@ -5,10 +5,16 @@
  */
 package Modeles;
 
+import Controller.FilmDAO;
+
 /**
  *
  * @author p1623107
  */
 public class C_Welcome_frame {
+    public FilmDAO filmDAO = new FilmDAO();
     
+    public void resetPlanning(){
+        filmDAO.setNb_proj0();
+    }
 }

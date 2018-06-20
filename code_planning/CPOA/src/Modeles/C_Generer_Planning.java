@@ -60,8 +60,8 @@ public class C_Generer_Planning {
                     nb_proj++;						 
                 }
             }
-            System.out.println(nouvCren+" ID CREN");
-            addSeancedemain(idSalle, nouvCren);
+            //System.out.println(nouvCren+" ID CREN");
+            //ddSeancedemain(idSalle, nouvCren);
         }
         
         if(idType == 1) { //HC
@@ -77,7 +77,7 @@ public class C_Generer_Planning {
             crenDAO.addFilm(nouvCren, idFilm);
             filmDAO.incrNb_proj(idFilm);
             nb_proj++;
-            addSeancedemain(idSalle, nouvCren);
+            //addSeancedemain(idSalle, nouvCren);
         }
         
         if(idType == 3) { //CM

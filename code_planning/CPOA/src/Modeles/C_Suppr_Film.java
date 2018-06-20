@@ -53,10 +53,13 @@ public class C_Suppr_Film {
     } 
     
     public void supprFilm(String date, String nom,String nomFilm) throws SQLException, ParseException{
+        System.out.println(nom);
         int idFilm = filmDAO.getidFilm(nomFilm);
         int idS = salleDAO.getidSalle(nom);
         DateFormat df = new SimpleDateFormat("YYYY/MM/dd HH:mm");
         java.util.Date jDate = df.parse(date);
-        crenDAO.supprFilm(jDate,idS, idFilm);
+        int nbproj = filmDAO.getnbProj(idFilm);
+        System.out.println("ICI");
+        crenDAO.supprFilm(jDate,idS, idFilm, nbproj);
     }
 }
